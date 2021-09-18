@@ -80,7 +80,7 @@ return [
 
         'customer'=>[
             'driver'=>'eloquent',
-            'model'=> App\Models\customer::class,
+            'model'=> App\Models\Customer::class,
         ],
 
         // 'users' => [
