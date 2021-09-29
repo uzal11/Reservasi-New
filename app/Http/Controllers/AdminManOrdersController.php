@@ -30,18 +30,18 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Nama Pelanggan","name"=>"customer_id","join"=>"customers,name"];
+			$this->col[] = ["label"=>"Nama Pelanggan","name"=>"user_id","join"=>"users,name"];
+			$this->col[] = ["label"=>"Kode Pesanan","name"=>"kode"];
 			$this->col[] = ["label"=>"Nama Meja","name"=>"table_id","join"=>"tables,name"];
 			$this->col[] = ["label"=>"Nama Kasir","name"=>"kasir_id","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Nama Pelayan","name"=>"pelayan_id","join"=>"cms_users,name"];
-			$this->col[] = ["label"=>"Kode","name"=>"kode"];
 			$this->col[] = ["label"=>"Total Harga","name"=>"total_harga"];
 			$this->col[] = ["label"=>"Total Makanan","name"=>"total_makanan"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Nama Pelanggan','name'=>'customer_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'customers,name'];
+			$this->form[] = ['label'=>'Nama Pelanggan','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,name'];
 			$this->form[] = ['label'=>'Nomor Meja','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
 			$this->form[] = ['label'=>'Nama Kasir','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
 			$this->form[] = ['label'=>'Nama Pelayan','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
@@ -288,7 +288,7 @@
 			}else if($postdata['jenis']=='Ditempat'){
 				$postdata['kode']="DI";
 			}
-			$postdata['kode'] =$postdata['kode'].date("ymdHi").$postdata['customer_id'];
+			$postdata['kode'] =$postdata['kode'].date("ymdHi").$postdata['user_id'];
 	    }
 
 	    /* 

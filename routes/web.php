@@ -22,7 +22,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/customerhome','PagesController@index')->name('customerhome');
 
-Route::prefix('customer')
+Route::get('/newlogin', 'NewLoginController@index')->name('newlogin');
+Route::get('/newregister', 'NewRegisterController@index')->name('newregister');
+
+
+/*Route::prefix('customer')
     ->as('customer.')
     ->group(function() {
     Route::get('home', 'Home\CustomerHomeController@index')->name('home');
@@ -32,4 +36,4 @@ Route::namespace('Auth\Login')
     Route::post('login', 'CustomerController@login')->name('login');
     Route::post('logout', 'CustomerController@logout')->name('logout');
       });
- });
+ });*/
