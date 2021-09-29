@@ -37,6 +37,7 @@
 			$this->col[] = ["label"=>"Nama Pelayan","name"=>"pelayan_id","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Total Harga","name"=>"total_harga"];
 			$this->col[] = ["label"=>"Total Makanan","name"=>"total_makanan"];
+			$this->col[] = ["label"=>"Total Minuman","name"=>"total_minuman"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -45,34 +46,30 @@
 			$this->form[] = ['label'=>'Nomor Meja','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
 			$this->form[] = ['label'=>'Nama Kasir','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
 			$this->form[] = ['label'=>'Nama Pelayan','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10', 'value'=>date("Y-m-d H:i:s")];
+			$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kapa Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10', 'dataenum'=>'Menunggu Pembayaran;Diproses;Selesai'];
-			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10', 'dataenum'=>'Reservasi;Ditempat'];
-			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Menunggu Pembayaran;Diproses;Selesai'];
+			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Reservasi;Ditempat'];
+			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Customer Id","name"=>"customer_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"customer,id"];
-			//$this->form[] = ["label"=>"Table Id","name"=>"table_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"table,id"];
-			//$this->form[] = ["label"=>"Kasir Id","name"=>"kasir_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"kasir,id"];
-			//$this->form[] = ["label"=>"Pelayan Id","name"=>"pelayan_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"pelayan,id"];
-			//$this->form[] = ["label"=>"Kode","name"=>"kode","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Total Harga","name"=>"total_harga","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Total Makanan","name"=>"total_makanan","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Total Minuman","name"=>"total_minuman","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Tota Harga Makanan","name"=>"tota_harga_makanan","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Total Harga Minuman","name"=>"total_harga_minuman","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Kapan Pesan","name"=>"kapan_pesan","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
-			//$this->form[] = ["label"=>"Kapa Bayar","name"=>"kapa_bayar","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
-			//$this->form[] = ["label"=>"Rencana Tiba","name"=>"rencana_tiba","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
-			//$this->form[] = ["label"=>"Kapan Tiba","name"=>"kapan_tiba","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
-			//$this->form[] = ["label"=>"Status","name"=>"status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Kapan Pesanan Selesai","name"=>"kapan_pesanan_selesai","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+			//$this->form[] = ['label'=>'Nama Pelanggan','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,name'];
+			//$this->form[] = ['label'=>'Nomor Meja','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
+			//$this->form[] = ['label'=>'Nama Kasir','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Nama Pelayan','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapa Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Menunggu Pembayaran;Diproses;Selesai'];
+			//$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Reservasi;Ditempat'];
+			//$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
