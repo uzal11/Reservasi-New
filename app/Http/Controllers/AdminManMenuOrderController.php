@@ -30,9 +30,11 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
+			$this->col[] = ["label"=>"Nama Pelanggan","name"=>"id","join"=>"users,name"];
 			$this->col[] = ["label"=>"Kode Pesanan","name"=>"order_id","join"=>"orders,kode"];
 			$this->col[] = ["label"=>"Nama Menu","name"=>"menu_id","join"=>"menus,name"];
 			$this->col[] = ["label"=>"Region","name"=>"region_id","join"=>"regions,name"];
+			$this->col[] = ["label"=>"Status Pesanan","name"=>"order_id","join"=>"orders,status"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -44,9 +46,10 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Order Id","name"=>"order_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"order,id"];
-			//$this->form[] = ["label"=>"Menu Id","name"=>"menu_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"menu,id"];
-			//$this->form[] = ["label"=>"Region Id","name"=>"region_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"region,id"];
+			//$this->form[] = ['label'=>'Kode Pesanan','name'=>'order_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'orders,kode'];
+			//$this->form[] = ['label'=>'Nama Menu','name'=>'menu_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'menus,name'];
+			//$this->form[] = ['label'=>'Region','name'=>'region_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'regions,name'];
+			//$this->form[] = ['label'=>'Status','name'=>'order_id','type'=>'select2','validation'=>'required','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 
