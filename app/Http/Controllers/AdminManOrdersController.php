@@ -32,7 +32,7 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Nama Pelanggan","name"=>"user_id","join"=>"users,name"];
 			$this->col[] = ["label"=>"Kode Pesanan","name"=>"kode"];
-			$this->col[] = ["label"=>"Nama Meja","name"=>"table_id","join"=>"tables,name"];
+			$this->col[] = ["label"=>"Nomor Meja","name"=>"table_id","join"=>"tables,name"];
 			$this->col[] = ["label"=>"Nama Kasir","name"=>"kasir_id","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Nama Pelayan","name"=>"pelayan_id","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Total Harga","name"=>"total_harga"];

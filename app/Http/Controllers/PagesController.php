@@ -8,8 +8,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('customerhome');
+        return view('cardmenu');
     }
-    protected $redirectTo = '/customerlogin';
+    protected $redirectTo = '/cardmenu';
 
 }

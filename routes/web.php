@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -15,15 +16,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/','PagesController@index');
+Route::get('/','HomeController@index');
 
 Auth::routes();
-
+Route::get('/sektor', 'SektorController@index');
+Route::get('order/{id}', 'OrderController@index');
+Route::post('order/{id}', 'OrderController@order');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/customerhome','PagesController@index')->name('customerhome');
-
 Route::get('/newlogin', 'NewLoginController@index')->name('newlogin');
 Route::get('/newregister', 'NewRegisterController@index')->name('newregister');
+
 
 
 /*Route::prefix('customer')
