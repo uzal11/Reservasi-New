@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,16 @@ Route::get('/','HomeController@index');
 Auth::routes();
 Route::get('/sektor', 'SektorController@index');
 Route::get('order/{id}', 'OrderController@index');
+//Route::get('/user/{id}', 'UserController@index');
 Route::post('order/{id}', 'OrderController@order');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/newlogin', 'NewLoginController@index')->name('newlogin');
 Route::get('/newregister', 'NewRegisterController@index')->name('newregister');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile', 'UserController@edit')->name('profile.edit');
+    Route::patch('profile', 'UserController@update')->name('profile.update');
+});
 
 
 

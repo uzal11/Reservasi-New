@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Menu;
-use App\MenuOrder;
-use App\Order;
+use App\Models\Menu;
+use App\Models\MenuOrder;
+use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
