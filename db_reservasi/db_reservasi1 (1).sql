@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2021 at 05:21 AM
+-- Generation Time: Oct 12, 2021 at 04:05 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -393,7 +393,89 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (243, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/module_generator/delete/28', 'Delete data Menu at Module Generator', '', 1, '2021-09-30 03:15:58', NULL),
 (244, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/delete/28', 'Delete data New Menu at Menu Management', '', 1, '2021-09-30 03:16:42', NULL),
 (245, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/delete/19', 'Delete data Menu at Menu Management', '', 1, '2021-09-30 03:16:47', NULL),
-(246, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/add-save', 'Add New Data Menu at Menu Management', '', 1, '2021-09-30 03:17:07', NULL);
+(246, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/add-save', 'Add New Data Menu at Menu Management', '', 1, '2021-09-30 03:17:07', NULL),
+(247, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/module_generator/delete/32', 'Delete data Meja at Module Generator', '', 1, '2021-09-30 04:25:15', NULL),
+(248, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/module_generator/delete/34', 'Delete data Sektor at Module Generator', '', 1, '2021-09-30 04:25:22', NULL),
+(249, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/edit-save/5', 'Update data Meja05 at Meja', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>0</td><td></td></tr></tbody></table>', 1, '2021-09-30 04:31:11', NULL),
+(250, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/edit-save/4', 'Update data Meja04 at Meja', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>0</td><td></td></tr></tbody></table>', 1, '2021-09-30 04:31:23', NULL),
+(251, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/edit-save/1', 'Update data Meja01 at Meja', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>0</td><td></td></tr></tbody></table>', 1, '2021-09-30 04:31:33', NULL),
+(252, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/edit-save/5', 'Update data Meja05 at Meja', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>0</td><td></td></tr></tbody></table>', 1, '2021-09-30 04:53:30', NULL),
+(253, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/5', 'Delete data Meja05 at Meja', '', 1, '2021-09-30 04:54:51', NULL),
+(254, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/4', 'Delete data Meja04 at Meja', '', 1, '2021-09-30 04:54:55', NULL),
+(255, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/3', 'Delete data Meja03 at Meja', '', 1, '2021-09-30 04:54:59', NULL),
+(256, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/2', 'Delete data Meja02 at Meja', '', 1, '2021-09-30 04:55:03', NULL),
+(257, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/1', 'Delete data Meja01 at Meja', '', 1, '2021-09-30 04:55:06', NULL),
+(258, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/add-save', 'Add New Data Meja01 at Meja', '', 1, '2021-09-30 04:56:10', NULL),
+(259, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/edit-save/6', 'Update data Meja01 at Meja', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 04:56:19', NULL),
+(260, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/6', 'Delete data Meja01 at Meja', '', 1, '2021-09-30 04:56:25', NULL),
+(261, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/edit-save/8', 'Update data Sektor1 at Region', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>udpated_at</td><td>2021-09-30 09:46:20</td><td></td></tr></tbody></table>', 1, '2021-09-30 04:57:47', NULL),
+(262, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/add-save', 'Add New Data Meja01 at Meja', '', 1, '2021-09-30 04:58:16', NULL),
+(263, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/delete/7', 'Delete data Meja01 at Meja', '', 1, '2021-09-30 04:58:55', NULL),
+(264, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/delete/10', 'Delete data Sektor3 at Region', '', 1, '2021-09-30 05:00:51', NULL),
+(265, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/delete/9', 'Delete data Sektor2 at Region', '', 1, '2021-09-30 05:00:55', NULL),
+(266, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/delete/8', 'Delete data Sektor1 at Region', '', 1, '2021-09-30 05:00:58', NULL),
+(267, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/add-save', 'Add New Data Sektor1 at Region', '', 1, '2021-09-30 05:01:20', NULL),
+(268, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/add-save', 'Add New Data Sektor2 at Region', '', 1, '2021-09-30 05:01:27', NULL),
+(269, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/add-save', 'Add New Data Meja01 at Meja', '', 1, '2021-09-30 05:10:37', NULL),
+(270, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/add-save', 'Add New Data Meja02 at Meja', '', 1, '2021-09-30 05:11:16', NULL),
+(271, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/add-save', 'Add New Data Sektor3 at Region', '', 1, '2021-09-30 05:12:29', NULL),
+(272, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_tables/add-save', 'Add New Data Meja05 at Meja', '', 1, '2021-09-30 05:12:49', NULL),
+(273, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/22', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>table_id</td><td>5</td><td>8</td></tr><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:15:35', NULL),
+(274, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/21', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:15:43', NULL),
+(275, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/20', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>table_id</td><td>1</td><td>10</td></tr><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:15:54', NULL),
+(276, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/19', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:16:08', NULL),
+(277, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/18', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:16:17', NULL),
+(278, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/17', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>table_id</td><td>3</td><td>9</td></tr><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:16:26', NULL),
+(279, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/16', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>table_id</td><td>1</td><td>8</td></tr><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:16:33', NULL),
+(280, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/15', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>table_id</td><td>1</td><td>8</td></tr><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>tota_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr></tbody></table>', 1, '2021-09-30 05:16:42', NULL),
+(281, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/13', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>10</td><td>11</td></tr></tbody></table>', 1, '2021-09-30 05:17:32', NULL),
+(282, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/10', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>region_id</td><td>8</td><td>12</td></tr></tbody></table>', 1, '2021-09-30 05:17:42', NULL),
+(283, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/13', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>jumlah_menu</td><td>0</td><td>1</td></tr></tbody></table>', 1, '2021-09-30 05:24:18', NULL),
+(284, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:28:15', NULL),
+(285, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/14', 'Delete data 14 at Order Menu', '', 1, '2021-09-30 05:28:55', NULL),
+(286, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:30:12', NULL),
+(287, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/15', 'Delete data 15 at Order Menu', '', 1, '2021-09-30 05:32:04', NULL),
+(288, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:33:56', NULL),
+(289, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:34:13', NULL),
+(290, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/17', 'Delete data 17 at Order Menu', '', 1, '2021-09-30 05:38:04', NULL),
+(291, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/16', 'Delete data 16 at Order Menu', '', 1, '2021-09-30 05:38:08', NULL),
+(292, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:38:38', NULL),
+(293, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/18', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>order_id</td><td>22</td><td>18</td></tr></tbody></table>', 1, '2021-09-30 05:43:48', NULL),
+(294, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/18', 'Delete data 18 at Order Menu', '', 1, '2021-09-30 05:43:53', NULL),
+(295, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/add-save', 'Add New Data  at Order', '', 1, '2021-09-30 05:45:39', NULL),
+(296, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:46:23', NULL),
+(297, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/19', 'Delete data 19 at Order Menu', '', 1, '2021-09-30 05:57:43', NULL),
+(298, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 05:59:25', NULL),
+(299, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/20', 'Delete data 20 at Order Menu', '', 1, '2021-09-30 05:59:33', NULL),
+(300, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 06:01:00', NULL),
+(301, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 06:01:12', NULL),
+(302, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/add-save', 'Add New Data  at Order Menu', '', 1, '2021-09-30 06:03:16', NULL),
+(303, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/23', 'Delete data 23 at Order Menu', '', 1, '2021-09-30 06:03:23', NULL),
+(304, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/22', 'Delete data 22 at Order Menu', '', 1, '2021-09-30 06:03:27', NULL),
+(305, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/delete/21', 'Delete data 21 at Order Menu', '', 1, '2021-09-30 06:03:32', NULL);
+INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `details`, `id_cms_users`, `created_at`, `updated_at`) VALUES
+(306, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/delete/32', 'Delete data New Order Menu at Menu Management', '', 1, '2021-09-30 06:10:54', NULL),
+(307, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/login', 'admin@crudbooster.com login with IP Address ::1', '', 1, '2021-10-06 13:18:50', NULL),
+(308, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/add-save', 'Add New Data Soto at Menu', '', 1, '2021-10-06 13:19:59', NULL),
+(309, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/add-save', 'Add New Data Burger at Menu', '', 1, '2021-10-06 13:22:31', NULL),
+(310, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/delete/4', 'Delete data Es Kopi Susu at Menu', '', 1, '2021-10-06 13:23:09', NULL),
+(311, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/13', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>menu_id</td><td>4</td><td>7</td></tr></tbody></table>', 1, '2021-10-06 14:53:49', NULL),
+(312, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/8', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>menu_id</td><td>4</td><td>6</td></tr></tbody></table>', 1, '2021-10-06 14:53:59', NULL),
+(313, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/login', 'admin@crudbooster.com login with IP Address ::1', '', 1, '2021-10-06 23:31:01', NULL),
+(314, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/add-save', 'Add New Data Soto Enak at Menu', '', 1, '2021-10-07 00:51:09', NULL),
+(315, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/edit-save/8', 'Update data Soto Enak at Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>description</td><td>Kebab Enak</td><td>Soto Enak</td></tr></tbody></table>', 1, '2021-10-07 00:51:27', NULL),
+(316, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/delete/7', 'Delete data Burger at Menu', '', 1, '2021-10-07 00:52:11', NULL),
+(317, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_menu_order/edit-save/13', 'Update data  at Order Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>menu_id</td><td>7</td><td>1</td></tr></tbody></table>', 1, '2021-10-07 01:47:47', NULL),
+(318, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/module_generator/delete/38', 'Delete data New Order Menu at Module Generator', '', 1, '2021-10-07 01:56:09', NULL),
+(319, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_new_menus/edit-save/1', 'Update data Nasi Ayam Bakar at Menu', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>Nasi Ayam Goreng</td><td>Nasi Ayam Bakar</td></tr></tbody></table>', 1, '2021-10-07 04:58:02', NULL),
+(320, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/edit-save/13', 'Update data Sektor3 at Region', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>photo</td><td></td><td>uploads/1/2021-10/whatsapp_image_2021_07_09_at_052828_1.jpeg</td></tr><tr><td>udpated_at</td><td>2021-09-30 12:12:29</td><td></td></tr></tbody></table>', 1, '2021-10-07 05:45:21', NULL),
+(321, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/edit-save/12', 'Update data Sektor2 at Region', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>photo</td><td></td><td>uploads/1/2021-10/146429627_246784780304422_4097682017304052973_n.jpg</td></tr><tr><td>udpated_at</td><td>2021-09-30 12:01:27</td><td></td></tr></tbody></table>', 1, '2021-10-07 05:45:43', NULL),
+(322, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_regions/edit-save/11', 'Update data Sektor1 at Region', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>photo</td><td></td><td>uploads/1/2021-10/whatsapp_image_2021_07_09_at_052825_1.jpeg</td></tr><tr><td>udpated_at</td><td>2021-09-30 12:01:20</td><td></td></tr></tbody></table>', 1, '2021-10-07 05:46:08', NULL),
+(323, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/delete/24', 'Delete data 24 at Order', '', 1, '2021-10-07 05:46:36', NULL),
+(324, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/module_generator/delete/37', 'Delete data Sektor at Module Generator', '', 1, '2021-10-07 05:50:06', NULL),
+(325, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 'http://localhost/reservasi1/public/admin/menu_management/edit-save/33', 'Update data Sektor at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>color</td><td></td><td>normal</td></tr><tr><td>icon</td><td>fa fa-glass</td><td>fa fa-map-marker</td></tr><tr><td>sorting</td><td>6</td><td></td></tr></tbody></table>', 1, '2021-10-07 05:51:13', NULL),
+(326, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36', 'http://localhost/reservasi1/public/admin/login', 'admin@crudbooster.com login with IP Address ::1', '', 1, '2021-10-11 13:28:21', NULL),
+(327, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36', 'http://localhost/reservasi1/public/admin/man_orders/edit-save/23', 'Update data  at Order', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>total_harga</td><td></td><td></td></tr><tr><td>total_makanan</td><td></td><td></td></tr><tr><td>total_minuman</td><td></td><td></td></tr><tr><td>total_harga_makanan</td><td></td><td></td></tr><tr><td>total_harga_minuman</td><td></td><td></td></tr><tr><td>check_in</td><td></td><td></td></tr><tr><td>keranjang_status</td><td></td><td></td></tr></tbody></table>', 1, '2021-10-11 13:29:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -425,9 +507,9 @@ INSERT INTO `cms_menus` (`id`, `name`, `type`, `path`, `color`, `icon`, `parent_
 (14, 'Order', 'Route', 'AdminManOrdersControllerGetIndex', 'normal', 'fa fa-glass', 0, 1, 0, 1, 3, '2021-09-29 00:15:48', '2021-09-30 02:23:59'),
 (17, 'Order Menu', 'Route', 'AdminManMenuOrderControllerGetIndex', 'normal', 'fa fa-list', 0, 1, 0, 1, 4, '2021-09-29 01:32:22', '2021-09-29 01:36:26'),
 (21, 'Customer', 'Route', 'AdminManUsers30ControllerGetIndex', 'normal', 'fa fa-users', 0, 1, 0, 1, 1, '2021-09-30 01:31:17', '2021-09-30 01:42:02'),
-(25, 'Meja', 'Route', 'AdminManTablesControllerGetIndex', 'normal', 'fa fa-table', 0, 1, 0, 1, 5, '2021-09-30 02:13:52', '2021-09-30 02:24:15'),
-(27, 'Sektor', 'Route', 'AdminManRegionsControllerGetIndex', NULL, 'fa fa-map-marker', 0, 1, 0, 1, 6, '2021-09-30 02:38:22', NULL),
-(29, 'Menu', 'Module', 'man_new_menus', 'normal', 'fa fa-star', 0, 1, 0, 1, 2, '2021-09-30 03:17:07', NULL);
+(29, 'Menu', 'Module', 'man_new_menus', 'normal', 'fa fa-star', 0, 1, 0, 1, 2, '2021-09-30 03:17:07', NULL),
+(30, 'Meja', 'Route', 'AdminManTablesControllerGetIndex', NULL, 'fa fa-table', 0, 1, 0, 1, 5, '2021-09-30 04:25:46', NULL),
+(33, 'Sektor', 'Route', 'AdminManRegionsControllerGetIndex', 'normal', 'fa fa-map-marker', 0, 1, 0, 1, 6, '2021-10-07 05:50:24', '2021-10-07 05:51:13');
 
 -- --------------------------------------------------------
 
@@ -494,7 +576,11 @@ INSERT INTO `cms_menus_privileges` (`id`, `id_cms_menus`, `id_cms_privileges`) V
 (69, 28, 1),
 (70, 29, 3),
 (71, 29, 2),
-(72, 29, 1);
+(72, 29, 1),
+(73, 30, 1),
+(74, 31, 1),
+(75, 32, 1),
+(77, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -552,10 +638,14 @@ INSERT INTO `cms_moduls` (`id`, `name`, `icon`, `path`, `table_name`, `controlle
 (29, 'New Customer', 'fa fa-user', 'man_users29', 'users', 'AdminManUsers29Controller', 0, 0, '2021-09-30 01:19:40', NULL, '2021-09-30 01:30:36'),
 (30, 'Customer', 'fa fa-users', 'man_users30', 'users', 'AdminManUsers30Controller', 0, 0, '2021-09-30 01:31:17', NULL, NULL),
 (31, 'Region', 'fa fa-map-marker', 'new_regions', 'regions', 'AdminNewRegionsController', 0, 0, '2021-09-30 02:09:21', NULL, '2021-09-30 02:22:09'),
-(32, 'Meja', 'fa fa-glass', 'man_tables', 'tables', 'AdminManTablesController', 0, 0, '2021-09-30 02:13:52', NULL, NULL),
+(32, 'Meja', 'fa fa-glass', 'man_tables', 'tables', 'AdminManTablesController', 0, 0, '2021-09-30 02:13:52', NULL, '2021-09-30 04:25:15'),
 (33, 'Region', 'fa fa-map-marker', 'man_regions', 'regions', 'AdminManRegionsController', 0, 0, '2021-09-30 02:29:03', NULL, '2021-09-30 02:33:28'),
-(34, 'Sektor', 'fa fa-map-marker', 'man_regions', 'regions', 'AdminManRegionsController', 0, 0, '2021-09-30 02:38:21', NULL, NULL),
-(35, 'Menu', 'fa fa-star', 'man_new_menus', 'menus', 'AdminManNewMenusController', 0, 0, '2021-09-30 03:15:21', NULL, NULL);
+(34, 'Sektor', 'fa fa-map-marker', 'man_regions', 'regions', 'AdminManRegionsController', 0, 0, '2021-09-30 02:38:21', NULL, '2021-09-30 04:25:22'),
+(35, 'Menu', 'fa fa-star', 'man_new_menus', 'menus', 'AdminManNewMenusController', 0, 0, '2021-09-30 03:15:21', NULL, NULL),
+(36, 'Meja', 'fa fa-table', 'man_tables', 'tables', 'AdminManTablesController', 0, 0, '2021-09-30 04:25:45', NULL, NULL),
+(37, 'Sektor', 'fa fa-map-marker', 'man_regions', 'regions', 'AdminManRegionsController', 0, 0, '2021-09-30 04:27:43', NULL, '2021-10-07 05:50:06'),
+(38, 'New Order Menu', 'fa fa-glass', 'new_menu_order', 'menu_order', 'AdminNewMenuOrderController', 0, 0, '2021-09-30 06:06:55', NULL, '2021-10-07 01:56:09'),
+(39, 'Sektor', 'fa fa-map-marker', 'man_regions', 'regions', 'AdminManRegionsController', 0, 0, '2021-10-07 05:50:24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -657,7 +747,11 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (61, 1, 1, 1, 1, 1, 1, 32, NULL, NULL),
 (62, 1, 1, 1, 1, 1, 1, 33, NULL, NULL),
 (63, 1, 1, 1, 1, 1, 1, 34, NULL, NULL),
-(64, 1, 1, 1, 1, 1, 1, 35, NULL, NULL);
+(64, 1, 1, 1, 1, 1, 1, 35, NULL, NULL),
+(65, 1, 1, 1, 1, 1, 1, 36, NULL, NULL),
+(66, 1, 1, 1, 1, 1, 1, 37, NULL, NULL),
+(67, 1, 1, 1, 1, 1, 1, 38, NULL, NULL),
+(68, 1, 1, 1, 1, 1, 1, 39, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -796,11 +890,12 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `name`, `price`, `photo`, `description`, `cathegory`, `created_at`, `updated_at`) VALUES
-(1, 'Nasi Ayam Goreng', 15000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052824.jpeg', 'Sangat enak dan Lezat', 'Makanan', '2021-09-24 00:12:15', '2021-09-29 04:01:12'),
+(1, 'Nasi Ayam Bakar', 15000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052824.jpeg', 'Sangat enak dan Lezat', 'Makanan', '2021-09-24 00:12:15', '2021-10-07 04:58:02'),
 (2, 'Nasi Rawon', 10000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_050725.jpeg', 'sangat enak dan lezat', 'Makanan', '2021-09-28 23:40:24', '2021-09-29 04:01:04'),
 (3, 'Ayam Geprek', 13000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052833.jpeg', 'sangat enak dan lezat', 'Makanan', '2021-09-28 23:40:57', '2021-09-29 04:00:56'),
-(4, 'Es Kopi Susu', 10000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052838_1.jpeg', 'Minuman yang sangat enak dan terasa kopinya', 'Minuman', '2021-09-29 04:00:43', '2021-09-30 03:08:03'),
-(5, 'Soto Daging', 15000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052834.jpeg', 'Sangat Enak Dan Lezat Dengan Daging Pilihan', 'Makanan', '2021-09-30 03:10:30', '2021-09-30 03:10:30');
+(5, 'Soto Daging', 15000, 'uploads/1/2021-09/whatsapp_image_2021_07_09_at_052834.jpeg', 'Sangat Enak Dan Lezat Dengan Daging Pilihan', 'Makanan', '2021-09-30 03:10:30', '2021-09-30 03:10:30'),
+(6, 'Soto', 10000, 'uploads/1/2021-10/whatsapp_image_2021_07_09_at_052832_1.jpeg', 'Soto yang sangat lezat dan enak', 'Makanan', '2021-10-06 13:19:59', '2021-10-06 13:19:59'),
+(8, 'Soto Enak', 10000, 'uploads/1/2021-10/whatsapp_image_2021_07_09_at_052834.jpeg', 'Soto Enak', 'Snack', '2021-10-07 00:51:09', '2021-10-07 00:51:27');
 
 -- --------------------------------------------------------
 
@@ -812,21 +907,21 @@ CREATE TABLE `menu_order` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
-  `region_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `jumlah_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `menu_order`
 --
 
-INSERT INTO `menu_order` (`id`, `order_id`, `menu_id`, `region_id`, `created_at`, `updated_at`) VALUES
-(7, 16, 3, 10, '2021-09-29 04:02:50', '2021-09-30 02:49:05'),
-(8, 18, 4, 9, '2021-09-29 04:03:00', '2021-09-30 02:48:58'),
-(9, 17, 1, 9, '2021-09-29 04:04:28', '2021-09-30 02:48:51'),
-(10, 15, 3, 8, '2021-09-29 04:06:01', '2021-09-30 02:48:37'),
-(13, 22, 4, 10, '2021-09-30 03:01:51', '2021-09-30 03:02:37');
+INSERT INTO `menu_order` (`id`, `order_id`, `menu_id`, `created_at`, `updated_at`, `jumlah_harga`) VALUES
+(7, 16, 3, '2021-09-29 04:02:50', '2021-09-30 02:49:05', 0),
+(8, 18, 6, '2021-09-29 04:03:00', '2021-10-06 14:53:59', 0),
+(9, 17, 1, '2021-09-29 04:04:28', '2021-09-30 02:48:51', 0),
+(10, 15, 3, '2021-09-29 04:06:01', '2021-09-30 05:17:42', 0),
+(13, 22, 1, '2021-09-30 03:01:51', '2021-10-07 01:47:47', 0);
 
 -- --------------------------------------------------------
 
@@ -883,14 +978,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `kasir_id` int(11) NOT NULL,
-  `pelayan_id` int(11) NOT NULL,
-  `kode` varchar(50) NOT NULL,
+  `table_id` int(11) DEFAULT NULL,
+  `kasir_id` int(11) DEFAULT NULL,
+  `pelayan_id` int(11) DEFAULT NULL,
+  `kode` varchar(50) DEFAULT NULL,
   `total_harga` int(11) DEFAULT NULL,
   `total_makanan` int(11) DEFAULT NULL,
   `total_minuman` int(11) DEFAULT NULL,
-  `tota_harga_makanan` int(11) DEFAULT NULL,
+  `total_harga_makanan` int(11) DEFAULT NULL,
   `total_harga_minuman` int(11) DEFAULT NULL,
   `kapan_pesan` timestamp NOT NULL DEFAULT current_timestamp(),
   `kapan_bayar` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -900,22 +995,25 @@ CREATE TABLE `orders` (
   `kapan_pesanan_selesai` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `jenis` varchar(10) NOT NULL
+  `jenis` varchar(10) DEFAULT NULL,
+  `check_in` char(1) DEFAULT NULL,
+  `keranjang_status` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `table_id`, `kasir_id`, `pelayan_id`, `kode`, `total_harga`, `total_makanan`, `total_minuman`, `tota_harga_makanan`, `total_harga_minuman`, `kapan_pesan`, `kapan_bayar`, `rencana_tiba`, `kapan_tiba`, `status`, `kapan_pesanan_selesai`, `created_at`, `updated_at`, `jenis`) VALUES
-(15, 10, 1, 2, 2, 'DI210929194110', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:41:23', '2021-09-29 12:41:23', 'Ditempat'),
-(16, 2, 1, 2, 2, 'RS21092919412', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:41:44', '2021-09-29 12:41:44', 'Reservasi'),
-(17, 7, 3, 2, 2, 'DI21092919427', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 12:42:09', '2021-09-29 12:42:09', 'Ditempat'),
-(18, 9, 2, 2, 2, 'DI21092919429', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:42:35', '2021-09-29 12:42:35', 'Ditempat'),
-(19, 4, 2, 2, 2, 'DI21092919444', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 12:44:27', '2021-09-29 12:44:27', 'Ditempat'),
-(20, 8, 1, 2, 2, 'DI21092919448', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Selesai', '2021-09-28 17:00:00', '2021-09-29 12:44:50', '2021-09-29 12:44:50', 'Ditempat'),
-(21, 7, 2, 2, 2, 'DI21092920307', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 13:30:39', '2021-09-29 13:30:39', 'Ditempat'),
-(22, 13, 5, 2, 2, 'DI210930095713', NULL, NULL, NULL, NULL, NULL, '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', 'Menunggu Pembayaran', '2021-09-29 17:00:00', '2021-09-30 02:57:26', '2021-09-30 02:57:26', 'Ditempat');
+INSERT INTO `orders` (`id`, `user_id`, `table_id`, `kasir_id`, `pelayan_id`, `kode`, `total_harga`, `total_makanan`, `total_minuman`, `total_harga_makanan`, `total_harga_minuman`, `kapan_pesan`, `kapan_bayar`, `rencana_tiba`, `kapan_tiba`, `status`, `kapan_pesanan_selesai`, `created_at`, `updated_at`, `jenis`, `check_in`, `keranjang_status`) VALUES
+(15, 10, 8, 2, 2, 'DI210929194110', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:41:23', '2021-09-30 05:16:42', 'Ditempat', '', ''),
+(16, 2, 8, 2, 2, 'RS21092919412', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:41:44', '2021-09-30 05:16:33', 'Reservasi', '', ''),
+(17, 7, 9, 2, 2, 'DI21092919427', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 12:42:09', '2021-09-30 05:16:26', 'Ditempat', '', ''),
+(18, 9, 9, 2, 2, 'DI21092919429', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Menunggu Pembayaran', '2021-09-28 17:00:00', '2021-09-29 12:42:35', '2021-09-30 05:16:17', 'Ditempat', '', ''),
+(19, 4, 9, 2, 2, 'DI21092919444', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 12:44:27', '2021-09-30 05:16:08', 'Ditempat', '', ''),
+(20, 8, 10, 2, 2, 'DI21092919448', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Selesai', '2021-09-28 17:00:00', '2021-09-29 12:44:50', '2021-09-30 05:15:54', 'Ditempat', '', ''),
+(21, 7, 9, 2, 2, 'DI21092920307', NULL, NULL, NULL, NULL, NULL, '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', '2021-09-28 17:00:00', 'Diproses', '2021-09-28 17:00:00', '2021-09-29 13:30:39', '2021-09-30 05:15:43', 'Ditempat', '', ''),
+(22, 13, 8, 2, 2, 'DI210930095713', NULL, NULL, NULL, NULL, NULL, '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', 'Menunggu Pembayaran', '2021-09-29 17:00:00', '2021-09-30 02:57:26', '2021-09-30 05:15:35', 'Ditempat', '', ''),
+(23, 7, 9, 2, 2, 'DI21093012457', NULL, NULL, NULL, NULL, NULL, '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', '2021-09-29 17:00:00', 'Menunggu Pembayaran', '2021-09-29 17:00:00', '2021-09-30 05:45:39', '2021-10-11 13:29:12', 'Ditempat', '', '');
 
 -- --------------------------------------------------------
 
@@ -937,8 +1035,8 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `regions` (
   `id` int(11) NOT NULL,
-  `table_id` int(100) NOT NULL,
   `name` varchar(20) NOT NULL,
+  `photo` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `udpated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -947,10 +1045,10 @@ CREATE TABLE `regions` (
 -- Dumping data for table `regions`
 --
 
-INSERT INTO `regions` (`id`, `table_id`, `name`, `created_at`, `udpated_at`) VALUES
-(8, 1, 'Sektor1', '2021-09-30 02:46:20', '2021-09-30 02:46:20'),
-(9, 2, 'Sektor2', '2021-09-30 02:47:16', '2021-09-30 02:47:16'),
-(10, 5, 'Sektor3', '2021-09-30 02:48:10', '2021-09-30 02:48:10');
+INSERT INTO `regions` (`id`, `name`, `photo`, `created_at`, `udpated_at`) VALUES
+(11, 'Sektor1', 'uploads/1/2021-10/whatsapp_image_2021_07_09_at_052825_1.jpeg', '2021-09-30 05:01:20', '2021-09-30 05:01:20'),
+(12, 'Sektor2', 'uploads/1/2021-10/146429627_246784780304422_4097682017304052973_n.jpg', '2021-09-30 05:01:27', '2021-09-30 05:01:27'),
+(13, 'Sektor3', 'uploads/1/2021-10/whatsapp_image_2021_07_09_at_052828_1.jpeg', '2021-09-30 05:12:29', '2021-09-30 05:12:29');
 
 -- --------------------------------------------------------
 
@@ -960,22 +1058,22 @@ INSERT INTO `regions` (`id`, `table_id`, `name`, `created_at`, `udpated_at`) VAL
 
 CREATE TABLE `tables` (
   `id` int(11) NOT NULL,
+  `region_id` int(100) NOT NULL,
   `name` varchar(20) NOT NULL,
   `capacity` varchar(3) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_available` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tables`
 --
 
-INSERT INTO `tables` (`id`, `name`, `capacity`, `created_at`, `updated_at`) VALUES
-(1, 'Meja01', '4', '2021-09-24 00:24:39', '2021-09-30 02:08:15'),
-(2, 'Meja02', '4', '2021-09-29 00:32:24', '2021-09-30 02:08:08'),
-(3, 'Meja03', '4', '2021-09-29 00:32:34', '2021-09-30 02:08:01'),
-(4, 'Meja04', '4', '2021-09-30 01:55:30', '2021-09-30 02:14:34'),
-(5, 'Meja05', '4', '2021-09-30 02:33:04', '2021-09-30 02:33:04');
+INSERT INTO `tables` (`id`, `region_id`, `name`, `capacity`, `created_at`, `updated_at`, `is_available`) VALUES
+(8, 11, 'Meja01', '4', '2021-09-30 05:10:37', '2021-09-30 05:10:37', 0),
+(9, 12, 'Meja02', '4', '2021-09-30 05:11:16', '2021-09-30 05:11:16', 0),
+(10, 13, 'Meja05', '4', '2021-09-30 05:12:49', '2021-09-30 05:12:49', 0);
 
 -- --------------------------------------------------------
 
@@ -988,7 +1086,6 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `chekcin` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -999,20 +1096,20 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `phone`, `email`, `chekcin`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Uzal', '345643345435', 'uzal11@gmail.com', 'YES', '$2y$10$YRcxL7H2bf3wI7FoHG4nF..pnRe6J/wXX4W02P/QtrMi.MxteRlie', 'fC2MJD0yf54TpEGyybQaL0sPJ1ON8gF8cwtV7BjdQW62SUsK5c6XlAF9tyBw', '2021-09-11 06:55:33', '2021-09-11 06:55:33'),
-(2, 'Aulia Rahman', '45345345', 'aulia3244@gmail.com', 'YES', '$2y$10$thVQak4pGhsiPf.Fiavt4.VDlGmTjKMV3HI5wiqDipkHrJ6rqA95C', 'UUHdC0kg58neyxGyfKmA21hLTxUBm2lA8h8xMXN6O6KhuPmxmGIhzx8wF20A', '2021-09-12 03:08:02', '2021-09-12 03:08:02'),
-(3, 'Super Uzal', '3948032948', 'superuzal10@gmail.com', 'YES', '$2y$10$iGMTSN8YH/5bCOqDaZefzeiJNZFNbmYhczdLbkMmeh0m9kzWkPoha', NULL, '2021-09-28 13:24:36', '2021-09-28 13:24:36'),
-(4, 'Jack Grealish', '09340920985', 'jackgrealish@gmail.com', 'YES', '$2y$10$EfTfWHhR/TtFfhGljdaVr.3eetAPvCSGHkDDEex9l07jzqQ4udwee', NULL, '2021-09-28 13:30:21', NULL),
-(5, 'Tomiyasu', '840234', 'tomiyasu@gmail.com', 'YES', '$2y$10$OOOd3nftN9lywPhXiCHvpuF5i6KqiqoPbVl9LNwH1lXq8rQBsg/9G', NULL, '2021-09-28 13:31:40', '2021-09-28 13:31:40'),
-(6, 'Phantom Assasins', '94890', 'pa@gmail.com', 'YES', '$2y$10$kvK8JXYe6in8CHyyp412E.czqRwPKa/Xyc.ryhT.3ViJBiyWpwThy', NULL, '2021-09-28 23:13:05', '2021-09-28 23:13:05'),
-(7, 'Ember Spirit', '20384903', 'ember@gmail.com', 'YES', '$2y$10$9Qpvn9jzYkyimSDYZQIEwObEBVXFumS6cPwiL/eR41RsGrXgIXb3a', NULL, '2021-09-28 23:24:57', NULL),
-(8, 'Smith Rowe', '82048239', 'smith@gmail.com', 'YES', '$2y$10$7h9E0nBjC0Q1ooQH.WttdO38MtbCOr55m2AZDSez4KW.J15io5gmS', NULL, '2021-09-29 01:39:06', '2021-09-29 01:39:06'),
-(9, 'Saka', '430480293', 'saka@gmail.com', 'YES', '$2y$10$M9aO2UYp7g0CUxNQmiDXr.QnWY.TZlv5Bm13SJq0n.K73jA97GAGi', NULL, '2021-09-29 01:41:26', '2021-09-29 01:41:26'),
-(10, 'Aubameyang', '0402938', 'auba@gmail.com', 'NO', '$2y$10$79.JnhzSEPuUQFhM04Tjbeo9G3Lj5YDt864Ya6QaY0fNhI7iHs4Di', NULL, '2021-09-29 01:44:21', '2021-09-30 01:35:02'),
-(11, 'Farzan', '982048', 'farzan@gmail.com', 'YES', '$2y$10$q6Q6A1XV1Nu.GeBbwAjiFuprle5MbpcuzGXceWTYNOiJoR2z8Hr7.', NULL, '2021-09-29 01:48:47', '2021-09-30 01:34:23'),
-(12, 'Mustakim', '208420394', 'mustakim@gmail.com', 'NO', '$2y$10$gvc74H25YnFYUKqIWfE9s.QHnjfDk6U7yxk2K6R98Hf9N1hQJpukq', NULL, '2021-09-29 13:11:11', '2021-09-30 01:34:10'),
-(13, 'Granit', '093482093', 'granit@gmail.com', 'NO', '$2y$10$rFxtHaKiAc1haMGDnQH61OlGpZuSIe7qM5AcdXr0oC9nteVAYxNFq', NULL, '2021-09-30 01:36:16', NULL);
+INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Uzal', '345643345435', 'uzal11@gmail.com', '$2y$10$YRcxL7H2bf3wI7FoHG4nF..pnRe6J/wXX4W02P/QtrMi.MxteRlie', 'fC2MJD0yf54TpEGyybQaL0sPJ1ON8gF8cwtV7BjdQW62SUsK5c6XlAF9tyBw', '2021-09-11 06:55:33', '2021-09-11 06:55:33'),
+(2, 'Aulia Rahman', '45345345', 'aulia3244@gmail.com', '$2y$10$thVQak4pGhsiPf.Fiavt4.VDlGmTjKMV3HI5wiqDipkHrJ6rqA95C', '6yKJv0rxJCwRtrmfe5f8OqVsaCYFO9fIVdeIRW1ymxOGP1RaB4O6adE3Vi1t', '2021-09-12 03:08:02', '2021-10-08 13:41:29'),
+(3, 'Super Uzal', '3948032948', 'superuzal10@gmail.com', '$2y$10$iGMTSN8YH/5bCOqDaZefzeiJNZFNbmYhczdLbkMmeh0m9kzWkPoha', NULL, '2021-09-28 13:24:36', '2021-09-28 13:24:36'),
+(4, 'Jack Grealish', '09340920985', 'jackgrealish@gmail.com', '$2y$10$EfTfWHhR/TtFfhGljdaVr.3eetAPvCSGHkDDEex9l07jzqQ4udwee', NULL, '2021-09-28 13:30:21', NULL),
+(5, 'Tomiyasu', '840234', 'tomiyasu@gmail.com', '$2y$10$OOOd3nftN9lywPhXiCHvpuF5i6KqiqoPbVl9LNwH1lXq8rQBsg/9G', NULL, '2021-09-28 13:31:40', '2021-09-28 13:31:40'),
+(6, 'Phantom Assasins', '94890', 'pa@gmail.com', '$2y$10$kvK8JXYe6in8CHyyp412E.czqRwPKa/Xyc.ryhT.3ViJBiyWpwThy', NULL, '2021-09-28 23:13:05', '2021-09-28 23:13:05'),
+(7, 'Ember Spirit', '20384903', 'ember@gmail.com', '$2y$10$9Qpvn9jzYkyimSDYZQIEwObEBVXFumS6cPwiL/eR41RsGrXgIXb3a', NULL, '2021-09-28 23:24:57', NULL),
+(8, 'Smith Rowe', '82048239', 'smith@gmail.com', '$2y$10$7h9E0nBjC0Q1ooQH.WttdO38MtbCOr55m2AZDSez4KW.J15io5gmS', NULL, '2021-09-29 01:39:06', '2021-09-29 01:39:06'),
+(9, 'Saka', '430480293', 'saka@gmail.com', '$2y$10$M9aO2UYp7g0CUxNQmiDXr.QnWY.TZlv5Bm13SJq0n.K73jA97GAGi', NULL, '2021-09-29 01:41:26', '2021-09-29 01:41:26'),
+(10, 'Aubameyang', '0402938', 'auba@gmail.com', '$2y$10$79.JnhzSEPuUQFhM04Tjbeo9G3Lj5YDt864Ya6QaY0fNhI7iHs4Di', NULL, '2021-09-29 01:44:21', '2021-09-30 01:35:02'),
+(11, 'Farzan', '982048', 'farzan@gmail.com', '$2y$10$q6Q6A1XV1Nu.GeBbwAjiFuprle5MbpcuzGXceWTYNOiJoR2z8Hr7.', NULL, '2021-09-29 01:48:47', '2021-09-30 01:34:23'),
+(12, 'Mustakim', '208420394', 'mustakim@gmail.com', '$2y$10$gvc74H25YnFYUKqIWfE9s.QHnjfDk6U7yxk2K6R98Hf9N1hQJpukq', NULL, '2021-09-29 13:11:11', '2021-09-30 01:34:10'),
+(13, 'Granit', '093482093', 'granit@gmail.com', '$2y$10$rFxtHaKiAc1haMGDnQH61OlGpZuSIe7qM5AcdXr0oC9nteVAYxNFq', NULL, '2021-09-30 01:36:16', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1207,25 +1304,25 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
 --
 ALTER TABLE `cms_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `cms_menus_privileges`
 --
 ALTER TABLE `cms_menus_privileges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `cms_moduls`
 --
 ALTER TABLE `cms_moduls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `cms_notifications`
@@ -1243,7 +1340,7 @@ ALTER TABLE `cms_privileges`
 -- AUTO_INCREMENT for table `cms_privileges_roles`
 --
 ALTER TABLE `cms_privileges_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `cms_settings`
@@ -1279,13 +1376,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `menu_order`
 --
 ALTER TABLE `menu_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1297,19 +1394,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `regions`
 --
 ALTER TABLE `regions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tables`
 --
 ALTER TABLE `tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
