@@ -10,6 +10,7 @@
             <img src="{{ $region->photo }}" class="card-img-top" alt=""/>
             <div class="card-body">
               <h5 class="card-title">{{ $region->name }}</h5>
+              <a href="#" class="btn btn-success">Pilih</a>
             </div>
           </div>
         </div>
