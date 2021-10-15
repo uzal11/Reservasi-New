@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-	use Session;
+use App\Models\Table;
+use Session;
 	use Request;
 	use DB;
 	use CRUDBooster;
@@ -267,7 +268,11 @@
 	    | 
 	    */
 	    public function hook_after_add($id) {        
-	        //Your code here
+	        $hashstr = QRFactory::generateSTR($id,"MJ");
+			//update in your database
+			$model = Table::find($id);
+			$model->hashcode = $hashstr;
+			$model->save();
 
 	    }
 
@@ -292,7 +297,11 @@
 	    | 
 	    */
 	    public function hook_after_edit($id) {
-	        //Your code here 
+	        $hashstr = QRFactory::generateSTR($id,"MJ");
+			//update in your database
+			$model = Table::find($id);
+			$model->hashcode = $hashstr;
+			$model->save();
 
 	    }
 

@@ -4,6 +4,7 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use App\Models\Region;
 
 	class AdminManRegionsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
@@ -266,6 +267,11 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			$hashstr = QRFactory::generateSTR($id,"SCT");
+			//update in your database
+			$model = Region::find($id);
+			$model->hashcode = $hashstr;
+			$model->save();
 
 	    }
 
@@ -290,7 +296,13 @@
 	    | 
 	    */
 	    public function hook_after_edit($id) {
-	        //Your code here 
+	        
+			//Your code here
+			$hashstr = QRFactory::generateSTR($id,"SCT");
+			//update in your database
+			$model = Region::find($id);
+			$model->hashcode = $hashstr;
+			$model->save();
 
 	    }
 
@@ -321,6 +333,7 @@
 
 
 	    //By the way, you can still create your own method in here... :) 
-
+		
 
 	}
+
