@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+/*Nanti dilindungi dengan admin*/
+
+
 /*Route::prefix('customer')
     ->as('customer.')
     ->group(function() {
