@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('qrcode/{id,type}', [QRFactory::class, 'generateQR'])->name('generate');
 
+/*Nanti dilindungi dengan admin*/
+
+
 /*Route::prefix('customer')
     ->as('customer.')
     ->group(function() {
