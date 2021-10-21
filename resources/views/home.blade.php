@@ -1,23 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2 style="text-align: center">Menu Gartenhutte</h2>
-    <div class="row justify-content-center">
-        @foreach ($menus as $menu)
-        <div class="col-md-4">
-          <div class="card">
-            <img src="{{ $menu->photo }}" class="card-img-top" alt=""/>
-            <div class="card-body">
-              <h5 class="card-title">{{ $menu->name }}</h5>
-              <p class="card-text">{{ $menu->description }}</p>
-              <p class="card-text">
-                  <strong> Harga Rp.{{ number_format($menu->price)  }}</strong> </p>
-              <a href="{{ url('order') }}/{{ $menu->id }}" class="btn btn-success">Tambah</a>
-            </div>
-          </div>
-        </div>
-        @endforeach
-    </div>
-</div>
-@endsection
+    <div class="container">
+        <h1 style="text-align: center" class="font-weight-bold">Selamat Datang di Gartenhutte</h1>
+        <h3 style="text-align: center" class="mt-5"><a href="{{ url('/scan') }}">Pesan Di Tempat</a></h3>
+        <h3 style="text-align: center"><a href="{{ url('/pesan') }}">Reservasi</a></h3>
+    @endsection

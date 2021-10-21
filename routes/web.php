@@ -1,7 +1,7 @@
 <?php
-
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\QRFactory;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -17,14 +17,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/','HomeController@index');
+Route::get('/','PagesController@index');
 
+Route::get('/scan','ScanController@index');
 Auth::routes();
 Route::get('/sektor', 'SektorController@index');
 Route::get('order/{id}', 'OrderController@index');
 //Route::get('/user/{id}', 'UserController@index');
 Route::post('order/{id}', 'OrderController@order');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/pesan', 'ReservasiController@index')->name('pesan');
 Route::get('/newlogin', 'NewLoginController@index')->name('newlogin');
 Route::get('/newregister', 'NewRegisterController@index')->name('newregister');
 
@@ -34,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+Route::get('qrcode/{id,type}', [QRFactory::class, 'generateQR'])->name('generate');
 
 /*Route::prefix('customer')
     ->as('customer.')
