@@ -16,6 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -44,6 +45,24 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <?php
+                            $order_utama = \App\Models\Order::where('user_id', Auth::user()->id)
+                                ->where('keranjang_status', 0)
+                                ->first();
+                            if (!empty($order_utama)) {
+                                $notif = \App\Models\MenuOrder::where('order_id', $order_utama->id)->count();
+                            }
+                            
+                            ?>
+                            <a class="nav-link" href="{{ url('check-out') }}">
+                                <i class="fa fa-shopping-cart">
+                                </i>
+                                @if (!empty($notif))
+                                    <span class="badge badge-danger">{{ $notif }}</span>
+                                @endif
+                            </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -67,7 +86,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -87,6 +106,9 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+    @include('sweetalert::alert')
 </body>
 
 </html>

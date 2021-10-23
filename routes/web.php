@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\QRFactory;
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/','PagesController@index');
+Route::get('/', 'PagesController@index');
 
-Route::get('/scan','ScanController@index');
+Route::get('/scan', 'ScanController@index');
 Auth::routes();
 Route::get('/sektor', 'SektorController@index');
 Route::get('order/{id}', 'OrderController@index');
@@ -31,10 +32,13 @@ Route::get('/newlogin', 'NewLoginController@index')->name('newlogin');
 Route::get('/newregister', 'NewRegisterController@index')->name('newregister');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('profile', 'UserController@edit')->name('profile.edit');
-    Route::patch('profile', 'UserController@update')->name('profile.update');
+  Route::get('profile', 'UserController@edit')->name('profile.edit');
+  Route::patch('profile', 'UserController@update')->name('profile.update');
 });
 
+Route::get('check-out', 'OrderController@check_out');
+Route::post('delete/check-out', 'OrderController@destroy');
+Route::get('konfirmasi-check-out', 'OrderController@konfirmasi');
 
 Route::get('qrcode/{id,type}', [QRFactory::class, 'generateQR'])->name('generate');
 

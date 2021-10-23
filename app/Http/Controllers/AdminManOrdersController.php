@@ -50,9 +50,8 @@
 			$this->form[] = ['label'=>'Kapa Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Menunggu Pembayaran;Diproses;Selesai'];
-			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Reservasi;Ditempat'];
-			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden','width'=>'col-sm-10','dataenum'=>'Reservasi;Ditempat'];
 			$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 

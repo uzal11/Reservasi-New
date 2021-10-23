@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
+    public function menu()
+    {
+        return $this->hasMany(\App\Models\MenuOrder::class);
+    }
 }

@@ -1,56 +1,60 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Models\Table;
 use Session;
-	use Request;
-	use DB;
-	use CRUDBooster;
+use Request;
+use DB;
+use CRUDBooster;
 
-	class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\CBController {
+class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\CBController
+{
 
-	    public function cbInit() {
+	public function cbInit()
+	{
 
-			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "name";
-			$this->limit = "20";
-			$this->orderby = "id,desc";
-			$this->global_privilege = false;
-			$this->button_table_action = true;
-			$this->button_bulk_action = true;
-			$this->button_action_style = "button_icon";
-			$this->button_add = true;
-			$this->button_edit = true;
-			$this->button_delete = true;
-			$this->button_detail = true;
-			$this->button_show = true;
-			$this->button_filter = true;
-			$this->button_import = false;
-			$this->button_export = false;
-			$this->table = "tables";
-			# END CONFIGURATION DO NOT REMOVE THIS LINE
+		# START CONFIGURATION DO NOT REMOVE THIS LINE
+		$this->title_field = "name";
+		$this->limit = "20";
+		$this->orderby = "id,desc";
+		$this->global_privilege = false;
+		$this->button_table_action = true;
+		$this->button_bulk_action = true;
+		$this->button_action_style = "button_icon";
+		$this->button_add = true;
+		$this->button_edit = true;
+		$this->button_delete = true;
+		$this->button_detail = true;
+		$this->button_show = true;
+		$this->button_filter = true;
+		$this->button_import = false;
+		$this->button_export = false;
+		$this->table = "tables";
+		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
-			# START COLUMNS DO NOT REMOVE THIS LINE
-			$this->col = [];
-			$this->col[] = ["label"=>"Nomor Meja","name"=>"name"];
-			$this->col[] = ["label"=>"Kapasitas","name"=>"capacity"];
-			$this->col[] = ["label"=>"Sektor","name"=>"region_id","join"=>"regions,name"];
-			# END COLUMNS DO NOT REMOVE THIS LINE
+		# START COLUMNS DO NOT REMOVE THIS LINE
+		$this->col = [];
+		$this->col[] = ["label" => "Nomor Meja", "name" => "name"];
+		$this->col[] = ["label" => "Kapasitas", "name" => "capacity"];
+		$this->col[] = ["label" => "Sektor", "name" => "region_id", "join" => "regions,name"];
+		# END COLUMNS DO NOT REMOVE THIS LINE
 
-			# START FORM DO NOT REMOVE THIS LINE
-			$this->form = [];
-			$this->form[] = ['label'=>'Sektor','name'=>'region_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'regions,name'];
-			$this->form[] = ['label'=>'Nomor Meja','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Kapasitas','name'=>'capacity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			# END FORM DO NOT REMOVE THIS LINE
+		# START FORM DO NOT REMOVE THIS LINE
+		$this->form = [];
+		$this->form[] = ['label' => 'Sektor', 'name' => 'region_id', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'datatable' => 'regions,name'];
+		$this->form[] = ['label' => 'Nomor Meja', 'name' => 'name', 'type' => 'text', 'validation' => 'required|string|min:3|max:70', 'width' => 'col-sm-10', 'placeholder' => 'You can only enter the letter only'];
+		$this->form[] = ['label' => 'Kapasitas', 'name' => 'capacity', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
+		# END FORM DO NOT REMOVE THIS LINE
 
-			# OLD START FORM
-			//$this->form = [];
-			//$this->form[] = ['label'=>'Sektor','name'=>'region_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'regions,name'];
-			//$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Capacity','name'=>'capacity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			# OLD END FORM
+		# OLD START FORM
+		//$this->form = [];
+		//$this->form[] = ['label'=>'Sektor','name'=>'region_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'regions,name'];
+		//$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+		//$this->form[] = ['label'=>'Capacity','name'=>'capacity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+		# OLD END FORM
 
-			/* 
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
 	        | ----------------------------------------------------------------------     
@@ -62,10 +66,10 @@ use Session;
 			| @parent_columns = Sparate with comma, e.g : name,created_at
 	        | 
 	        */
-	        $this->sub_module = array();
+		$this->sub_module = array();
 
 
-	        /* 
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Action Button / Menu
 	        | ----------------------------------------------------------------------     
@@ -76,10 +80,13 @@ use Session;
 	        | @showIf 	   = If condition when action show. Use field alias. e.g : [id] == 1
 	        | 
 	        */
-	        $this->addaction = array();
+		$this->addaction = array();
+		$this->addaction[] = ['label' => 'Generate QR', 'url' => CRUDBooster::mainpath('set-status/active/[id]'), 'icon' => 'fa fa-check', 'color' => 'success'];
+		//$this->addaction[] = ['label' => 'Set Pending', 'url' => CRUDBooster::mainpath('set-status/pending/[id]'), 'icon' => 'fa fa-ban', 'color' => 'warning', 'showIf' => "[status] == 'active'", 'confirmation' => true];
 
 
-	        /* 
+
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Button Selected
 	        | ----------------------------------------------------------------------     
@@ -89,10 +96,10 @@ use Session;
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-	        $this->button_selected = array();
+		$this->button_selected = array();
 
-	                
-	        /* 
+
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Add alert message to this module at overheader
 	        | ----------------------------------------------------------------------     
@@ -100,11 +107,11 @@ use Session;
 	        | @type    = warning,success,danger,info        
 	        | 
 	        */
-	        $this->alert        = array();
-	                
+		$this->alert        = array();
 
-	        
-	        /* 
+
+
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Add more button to header button 
 	        | ----------------------------------------------------------------------     
@@ -113,11 +120,11 @@ use Session;
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-	        $this->index_button = array();
+		$this->index_button = array();
 
 
 
-	        /* 
+		/* 
 	        | ---------------------------------------------------------------------- 
 	        | Customize Table Row Color
 	        | ----------------------------------------------------------------------     
@@ -125,21 +132,21 @@ use Session;
 	        | @color = Default is none. You can use bootstrap success,info,warning,danger,primary.        
 	        | 
 	        */
-	        $this->table_row_color = array();     	          
+		$this->table_row_color = array();
 
-	        
-	        /*
+
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | You may use this bellow array to add statistic at dashboard 
 	        | ---------------------------------------------------------------------- 
 	        | @label, @count, @icon, @color 
 	        |
 	        */
-	        $this->index_statistic = array();
+		$this->index_statistic = array();
 
 
 
-	        /*
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Add javascript at body 
 	        | ---------------------------------------------------------------------- 
@@ -147,10 +154,10 @@ use Session;
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-	        $this->script_js = NULL;
+		$this->script_js = NULL;
 
 
-            /*
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Include HTML Code before index table 
 	        | ---------------------------------------------------------------------- 
@@ -158,11 +165,11 @@ use Session;
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->pre_index_html = null;
-	        
-	        
-	        
-	        /*
+		$this->pre_index_html = null;
+
+
+
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Include HTML Code after index table 
 	        | ---------------------------------------------------------------------- 
@@ -170,11 +177,11 @@ use Session;
 	        | $this->post_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->post_index_html = null;
-	        
-	        
-	        
-	        /*
+		$this->post_index_html = null;
+
+
+
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Include Javascript File 
 	        | ---------------------------------------------------------------------- 
@@ -182,11 +189,11 @@ use Session;
 	        | $this->load_js[] = asset("myfile.js");
 	        |
 	        */
-	        $this->load_js = array();
-	        
-	        
-	        
-	        /*
+		$this->load_js = array();
+
+
+
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Add css style at body 
 	        | ---------------------------------------------------------------------- 
@@ -194,11 +201,11 @@ use Session;
 	        | $this->style_css = ".style{....}";
 	        |
 	        */
-	        $this->style_css = NULL;
-	        
-	        
-	        
-	        /*
+		$this->style_css = NULL;
+
+
+
+		/*
 	        | ---------------------------------------------------------------------- 
 	        | Include css File 
 	        | ---------------------------------------------------------------------- 
@@ -206,13 +213,11 @@ use Session;
 	        | $this->load_css[] = asset("myfile.css");
 	        |
 	        */
-	        $this->load_css = array();
-	        
-	        
-	    }
+		$this->load_css = array();
+	}
 
 
-	    /*
+	/*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected
 	    | ---------------------------------------------------------------------- 
@@ -220,63 +225,67 @@ use Session;
 	    | @button_name = the name of button
 	    |
 	    */
-	    public function actionButtonSelected($id_selected,$button_name) {
-	        //Your code here
-	            
-	    }
+	public function actionButtonSelected($id_selected, $button_name)
+	{
+		//Your code here
+
+	}
 
 
-	    /*
+	/*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate query of index result 
 	    | ---------------------------------------------------------------------- 
 	    | @query = current sql query 
 	    |
 	    */
-	    public function hook_query_index(&$query) {
-	        //Your code here
-	            
-	    }
+	public function hook_query_index(&$query)
+	{
+		//Your code here
 
-	    /*
+	}
+
+	/*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate row of index table html 
 	    | ---------------------------------------------------------------------- 
 	    |
-	    */    
-	    public function hook_row_index($column_index,&$column_value) {	        
-	    	//Your code here
-	    }
+	    */
+	public function hook_row_index($column_index, &$column_value)
+	{
+		//Your code here
+	}
 
-	    /*
+	/*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate data input before add data is execute
 	    | ---------------------------------------------------------------------- 
 	    | @arr
 	    |
 	    */
-	    public function hook_before_add(&$postdata) {        
-	        //Your code here
+	public function hook_before_add(&$postdata)
+	{
+		//Your code here
 
-	    }
+	}
 
-	    /* 
+	/* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after add public static function called 
 	    | ---------------------------------------------------------------------- 
 	    | @id = last insert id
 	    | 
 	    */
-	    public function hook_after_add($id) {        
-	        $hashstr = QRFactory::generateSTR($id,"MJ");
-			//update in your database
-			$model = Table::find($id);
-			$model->hashcode = $hashstr;
-			$model->save();
+	public function hook_after_add($id)
+	{
+		$hashstr = QRFactory::generateSTR($id, "MJ");
+		//update in your database
+		$model = Table::find($id);
+		$model->hashcode = $hashstr;
+		$model->save();
+	}
 
-	    }
-
-	    /* 
+	/* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate data input before update data is execute
 	    | ---------------------------------------------------------------------- 
@@ -284,54 +293,57 @@ use Session;
 	    | @id       = current id 
 	    | 
 	    */
-	    public function hook_before_edit(&$postdata,$id) {        
-	        //Your code here
+	public function hook_before_edit(&$postdata, $id)
+	{
+		//Your code here
 
-	    }
+	}
 
-	    /* 
+	/* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after edit public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	    public function hook_after_edit($id) {
-	        $hashstr = QRFactory::generateSTR($id,"MJ");
-			//update in your database
-			$model = Table::find($id);
-			$model->hashcode = $hashstr;
-			$model->save();
+	public function hook_after_edit($id)
+	{
+		$hashstr = QRFactory::generateSTR($id, "MJ");
+		//update in your database
+		$model = Table::find($id);
+		$model->hashcode = $hashstr;
+		$model->save();
+	}
 
-	    }
-
-	    /* 
+	/* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command before delete public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	    public function hook_before_delete($id) {
-	        //Your code here
+	public function hook_before_delete($id)
+	{
+		//Your code here
 
-	    }
+	}
 
-	    /* 
+	/* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after delete public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	    public function hook_after_delete($id) {
-	        //Your code here
-
-	    }
-
-
-
-	    //By the way, you can still create your own method in here... :) 
-
+	public function hook_after_delete($id)
+	{
+		//Your code here
 
 	}
+
+
+
+	//By the way, you can still create your own method in here... :) 
+
+
+}

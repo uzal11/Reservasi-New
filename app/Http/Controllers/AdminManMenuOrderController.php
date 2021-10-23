@@ -25,7 +25,7 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "menu_order";
+			$this->table = "menu_orders";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
@@ -34,6 +34,7 @@
 			$this->col[] = ["label"=>"Kode Pesanan","name"=>"order_id","join"=>"orders,kode"];
 			$this->col[] = ["label"=>"Nama Menu","name"=>"menu_id","join"=>"menus,name"];
 			$this->col[] = ["label"=>"Status Pesanan","name"=>"order_id","join"=>"orders,status"];
+			$this->col[] = ["label"=>"Jumlah","name"=>"id","join"=>"menu_orders,jumlah"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
