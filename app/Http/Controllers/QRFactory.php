@@ -15,7 +15,7 @@ class QRFactory extends Controller
     public static function generateQR($id, $type)
     {
         $stringhash = QRFactory::_enkrispi($id, $type);
-        $qrcode = QrCode::size(400)->generate($id . "_" . $type);
+        $qrcode = QrCode::size(400)->generate($stringhash);
         // dd($qrcode);
         return view("qrcode", compact("qrcode")); //ini
     }
@@ -26,6 +26,23 @@ class QRFactory extends Controller
 
     public static function scan($string)
     {
+        $data_table = Table::where('hashcode',$string)->get();
+        $data_sector = Region::where('hashcode',$string)->get();
+        //cek data_table ada berapa row
+        //cek data_sector ada berapa row 
+        if (count($data_table)>0)
+        {
+            //return value --> id dan nama meja
+        }
+        else if (count($data_sector)>0)
+        {
+            //return value --> id dan nama region
+        }
+        else 
+        {
+            return "INVALID";
+        }
+
     }
 
     private static function _enkrispi($p1, $p2)
