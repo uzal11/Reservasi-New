@@ -23,6 +23,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/scan', 'ScanController@index');
 Auth::routes();
 Route::get('/sektor', 'SektorController@index');
+Route::get('/table', 'TableController@index');
 Route::get('order/{id}', 'OrderController@index');
 //Route::get('/user/{id}', 'UserController@index');
 Route::post('order/{id}', 'OrderController@order');
@@ -35,12 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('profile', 'UserController@edit')->name('profile.edit');
   Route::patch('profile', 'UserController@update')->name('profile.update');
 });
-
+// Route::post('order/{id}', 'OrderController@pilihmeja');
 Route::get('check-out', 'OrderController@check_out');
 Route::post('delete/check-out', 'OrderController@destroy');
 Route::get('konfirmasi-check-out', 'OrderController@konfirmasi');
 
-Route::get('qrcode/{id,type}', [QRFactory::class, 'generateQR'])->name('generate');
+Route::get('qrcode/{id}/{type}', [QRFactory::class, 'generateQR'])->name('generate');
 
 /*Nanti dilindungi dengan admin*/
 

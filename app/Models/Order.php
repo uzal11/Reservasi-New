@@ -10,4 +10,9 @@ class Order extends Model
     {
         return $this->hasMany(\App\Models\MenuOrder::class);
     }
+
+    public function customer()
+    {
+        return $this->hasMany(\App\User::class, 'user_id');
+    }
 }

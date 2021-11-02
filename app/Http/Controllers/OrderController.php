@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\MenuOrder;
 use App\Models\Order;
+use App\Models\Table;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,8 +96,18 @@ class OrderController extends Controller
 
         $menu_order->delete();
 
-        return redirect('check-out')->with('warning', 'Berhasil Terhapus');
+        return redirect('check-out')->with('warning', 'Berhasil Dihapus');
     }
+
+    // public function pilihmeja($id)
+    // {
+    //     $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+    //     $tables = Table::where('id', $id)->first();
+    //     $order->table_id = $tables;
+    //     $order->update();
+
+    //     return redirect('check-out')->with('success', 'Berhasil Pilih Meja');
+    // }
 
     public function konfirmasi()
     {

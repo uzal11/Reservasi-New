@@ -61,6 +61,22 @@
                                                     <i class="fa fa-shopping-cart"></i>Check Out</a>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td><a href="{{ url('/table') }}" class="btn btn-primary">Pilih Meja dan
+                                                    Sektor</a></td>
+                                        </tr>
+                                        {{-- @foreach ($tables as $table)
+                                            <tr>
+                                                <th>Nomor Meja</th>
+                                                <th>Kapasitas</th>
+                                                <th>Sektor</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ $table->name }}</td>
+                                                <td>{{ $table->capacity }}</td>
+                                                <td>{{ $table->region->name }}</td>
+                                            </tr>
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                         @endif

@@ -81,7 +81,7 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | 
 	        */
 		$this->addaction = array();
-		$this->addaction[] = ['label' => 'Generate QR', 'url' => CRUDBooster::mainpath('set-status/active/[id]'), 'icon' => 'fa fa-check', 'color' => 'success'];
+		$this->addaction[] = ['label' => 'Generate QR', 'url' => url('/qrcode/[id]/MJ'), 'icon' => 'fa fa-check', 'color' => 'success'];
 		//$this->addaction[] = ['label' => 'Set Pending', 'url' => CRUDBooster::mainpath('set-status/pending/[id]'), 'icon' => 'fa fa-ban', 'color' => 'warning', 'showIf' => "[status] == 'active'", 'confirmation' => true];
 
 
