@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('profile', 'UserController@edit')->name('profile.edit');
   Route::patch('profile', 'UserController@update')->name('profile.update');
 });
-// Route::post('order/{id}', 'OrderController@pilihmeja');
+Route::post('ordermeja/{id}', 'OrderController@pilihmeja');
 Route::get('check-out', 'OrderController@check_out');
 Route::post('delete/check-out', 'OrderController@destroy');
 Route::get('konfirmasi-check-out', 'OrderController@konfirmasi');

@@ -99,15 +99,17 @@ class OrderController extends Controller
         return redirect('check-out')->with('warning', 'Berhasil Dihapus');
     }
 
-    // public function pilihmeja($id)
-    // {
-    //     $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
-    //     $tables = Table::where('id', $id)->first();
-    //     $order->table_id = $tables;
-    //     $order->update();
+    public function pilihmeja($id)
+    {
+        $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
 
-    //     return redirect('check-out')->with('success', 'Berhasil Pilih Meja');
-    // }
+        $tables = Table::where('id', $id)->first();
+        $order->table_id = $tables->id;
+        //dd($order);
+        $order->update();
+
+        return redirect('check-out')->with('success', 'Berhasil Pilih Meja');
+    }
 
     public function konfirmasi()
     {

@@ -45,10 +45,10 @@
                                                 <input type="text" id="date">
                                             </td> --}}
                                             <td>
-                                                <form action="{{ url('order') }}/{{ $table->id }}" method="post">
+                                                <form action="{{ url('ordermeja') }}/{{ $table->id }}" method="post">
                                                     @csrf
                                                     <button type="submit" class="btn btn-primary btn-sm">
-                                                        Pilih
+                                                        Pilihs
                                                     </button>
                                                 </form>
                                             </td>
