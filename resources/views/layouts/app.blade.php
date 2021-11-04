@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/gartenhuttelogo.png') }}">
-
+    @laravelPWA
 </head>
 
 <body>

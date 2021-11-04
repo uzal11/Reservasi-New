@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+    
     <!-- Styles -->
     <style>
         html,
@@ -67,6 +67,7 @@
     </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/gartenhuttelogo.png') }}">
+    @laravelPWA
 </head>
 
 <body>

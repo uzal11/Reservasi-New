@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'PagesController@index');
+//buat PWA
+Route::view('/offline','vendor.laravelpwa.offline');
 
 Route::get('/scan', 'ScanController@index');
 Auth::routes();
