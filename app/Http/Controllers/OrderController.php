@@ -81,8 +81,9 @@ class OrderController extends Controller
         if (!empty($order)) {
             $menu_orders = MenuOrder::where('order_id', $order->id)->get();
         }
+        $tables = Table::where('id', $order->table_id)->get();
 
-        return view('order.check_out', compact('order', 'menu_orders'));
+        return view('order.check_out', compact('order', 'menu_orders', 'tables'));
     }
 
     public function destroy(Request $request)

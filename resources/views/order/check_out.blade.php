@@ -56,27 +56,32 @@
                                         <tr>
                                             <td colspan="4" align="right"><strong>Sub Total :</strong> </td>
                                             <td> <strong>Rp. {{ number_format($order->total_harga) }}</strong> </td>
-                                            <td>
-                                                <a href="{{ url('konfirmasi-check-out') }}" class="btn btn-success">
-                                                    <i class="fa fa-shopping-cart"></i>Check Out</a>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td><a href="{{ url('/table') }}" class="btn btn-primary">Pilih Meja dan
                                                     Sektor</a></td>
                                         </tr>
-                                        {{-- @foreach ($tables as $table)
-                                            <tr>
-                                                <th>Nomor Meja</th>
-                                                <th>Kapasitas</th>
-                                                <th>Sektor</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Nomor Meja</th>
+                                            <th>Kapasitas</th>
+                                            <th>Sektor</th>
+                                            <th>Foto</th>
+                                        </tr>
+                                        @foreach ($tables as $table)
                                             <tr>
                                                 <td>{{ $table->name }}</td>
                                                 <td>{{ $table->capacity }}</td>
                                                 <td>{{ $table->region->name }}</td>
+                                                <td><img src="{{ $table->region->photo }}" width="15%" alt=""></td>
+                                                <td colspan="4">
+                                                    <a href="{{ url('konfirmasi-check-out') }}" class="btn btn-success">
+                                                        <i class="fa fa-shopping-cart"></i>Check Out</a>
+                                                </td>
                                             </tr>
-                                        @endforeach --}}
+                                            <tr>
+
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                         @endif

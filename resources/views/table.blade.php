@@ -48,7 +48,7 @@
                                                 <form action="{{ url('ordermeja') }}/{{ $table->id }}" method="post">
                                                     @csrf
                                                     <button type="submit" class="btn btn-primary btn-sm">
-                                                        Pilihs
+                                                        Pilih
                                                     </button>
                                                 </form>
                                             </td>
