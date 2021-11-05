@@ -12,7 +12,7 @@
 
     <script src="{{ asset('js/instascan.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('html5-qrcode.min.js') }}"></script>
+    {{-- <script src="{{ asset('html5-qrcode.min.js') }}"></script> --}}
 </head>
 
 <body>
@@ -43,7 +43,7 @@
     scanner.addListener('scan', function(content) {
         //alert(content);
         //$("#qrcode").val(content);
-        window.location = content;
+        window.location = '/reservasi1/public/scan/' + content;
     });
 
     Instascan.Camera.getCameras().then(function(cameras) {
@@ -55,18 +55,5 @@
         console.error(e)
     });
 </script>
-{{-- <script>
-    function onScanSuccess(decodedText, decodedResult) {
-        // Handle on success condition with the decoded text or result.
-        console.log(`Scan result: ${decodedText}`, decodedResult);
-    }
-
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader", {
-            fps: 10,
-            qrbox: 250
-        });
-    html5QrcodeScanner.render(onScanSuccess);
-</script> --}}
 
 </html>
