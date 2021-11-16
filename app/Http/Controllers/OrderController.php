@@ -115,9 +115,10 @@ class OrderController extends Controller
     public function konfirmasi()
     {
         $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+        $order_id = $order->id;
         $order->keranjang_status = 1;
         $order->update();
 
-        return redirect('check-out')->with('success', 'Berhasil Check Out');
+        return redirect('history/' . $order_id)->with('success', 'Berhasil Check Out');
     }
 }

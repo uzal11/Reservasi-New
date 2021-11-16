@@ -21,11 +21,11 @@
             <div class="col-md-5">
                 <div class="card-header bg-transparent mb-0">
                     <h5 class="text-center"><span class="font-weight-bold text-primary">Scan QR Meja</span> </h5>
-                    <div class="card-body">
+                    <div class="card-body align-items-center d-flex justify-content-center">
                         <video id="preview" width="300" height="300" src=""></video>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <input type="text" id="qrcode" class="form-control">
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

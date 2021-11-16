@@ -84,10 +84,13 @@
                                     <a href="{{ route('profile.edit') }}" class="dropdown-item">
                                         Edit Profile
                                     </a>
+                                    <a href="{{ url('history') }}" class="dropdown-item">
+                                        Riwayat Pemesanan
+                                    </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

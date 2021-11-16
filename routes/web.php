@@ -45,7 +45,8 @@ Route::post('delete/check-out', 'OrderController@destroy');
 Route::get('konfirmasi-check-out', 'OrderController@konfirmasi');
 
 Route::get('qrcode/{id}/{type}', [QRFactory::class, 'generateQR'])->name('generate');
-
+Route::get('history', 'HistoryController@index');
+Route::get('history/{id}', 'HistoryController@detail');
 /*Nanti dilindungi dengan admin*/
 
 
