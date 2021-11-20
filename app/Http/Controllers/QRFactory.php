@@ -40,9 +40,11 @@ class QRFactory extends Controller
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->table_id = $data_table->id;
+            $order->jenis = 'Dinein';
+            $order->kode = 'DI' . date("ymdHi");
             $order->save();
 
-            return redirect('check-out');
+            return redirect('pesan');
         }
         // else if (count($data_sector)>0)
         // {

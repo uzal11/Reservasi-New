@@ -34,7 +34,7 @@
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $order->kapan_pesan }}</td>
+                                        <td>{{ date('d M Y H:i', strtotime($order->kapan_pesan)) }}</td>
                                         <td>
                                             @if ($order->keranjang_status == 1)
                                                 Sudah Pesan & Belum Dibayar

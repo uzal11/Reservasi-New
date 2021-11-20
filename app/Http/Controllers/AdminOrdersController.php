@@ -1,62 +1,66 @@
-<?php
+<?php namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
+	use Session;
+	use Request;
+	use DB;
+	use CRUDBooster;
 
-use App\Models\Table;
-use Session;
-use Request;
-use DB;
-use CRUDBooster;
+	class AdminOrdersController extends \crocodicstudio\crudbooster\controllers\CBController {
 
-class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\CBController
-{
+	    public function cbInit() {
 
-	public function cbInit()
-	{
+			# START CONFIGURATION DO NOT REMOVE THIS LINE
+			$this->title_field = "id";
+			$this->limit = "20";
+			$this->orderby = "id,desc";
+			$this->global_privilege = false;
+			$this->button_table_action = true;
+			$this->button_bulk_action = true;
+			$this->button_action_style = "button_icon";
+			$this->button_add = true;
+			$this->button_edit = true;
+			$this->button_delete = true;
+			$this->button_detail = true;
+			$this->button_show = true;
+			$this->button_filter = true;
+			$this->button_import = false;
+			$this->button_export = false;
+			$this->table = "orders";
+			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
-		# START CONFIGURATION DO NOT REMOVE THIS LINE
-		$this->title_field = "name";
-		$this->limit = "20";
-		$this->orderby = "id,desc";
-		$this->global_privilege = false;
-		$this->button_table_action = true;
-		$this->button_bulk_action = true;
-		$this->button_action_style = "button_icon";
-		$this->button_add = true;
-		$this->button_edit = true;
-		$this->button_delete = true;
-		$this->button_detail = true;
-		$this->button_show = true;
-		$this->button_filter = true;
-		$this->button_import = false;
-		$this->button_export = false;
-		$this->table = "tables";
-		# END CONFIGURATION DO NOT REMOVE THIS LINE
+			# START COLUMNS DO NOT REMOVE THIS LINE
+			$this->col = [];
+			$this->col[] = ["label"=>"Nama","name"=>"user_id","join"=>"users,name"];
+			$this->col[] = ["label"=>"Kode","name"=>"kode"];
+			# END COLUMNS DO NOT REMOVE THIS LINE
 
-		# START COLUMNS DO NOT REMOVE THIS LINE
-		$this->col = [];
-		$this->col[] = ["label" => "Nomor Meja", "name" => "name"];
-		$this->col[] = ["label" => "Jumlah Kursi", "name" => "jumlah_kursi"];
-		$this->col[] = ["label" => "Sektor", "name" => "region_id", "join" => "regions,name"];
-		$this->col[] = ["label" => "Maksimal Kursi", "name" => "max_kursi"];
-		# END COLUMNS DO NOT REMOVE THIS LINE
+			# START FORM DO NOT REMOVE THIS LINE
+			$this->form = [];
+			$this->form[] = ['label'=>'Nama','name'=>'user_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'user,id'];
+			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			# END FORM DO NOT REMOVE THIS LINE
 
-		# START FORM DO NOT REMOVE THIS LINE
-		$this->form = [];
-		$this->form[] = ['label' => 'Sektor', 'name' => 'region_id', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'datatable' => 'regions,name'];
-		$this->form[] = ['label' => 'Nomor Meja', 'name' => 'name', 'type' => 'text', 'validation' => 'required|string|min:3|max:70', 'width' => 'col-sm-10', 'placeholder' => 'You can only enter the letter only'];
-		$this->form[] = ['label' => 'Kapasitas', 'name' => 'jumlah_kursi', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
-		$this->form[] = ['label' => 'Maksimal Kursi', 'name' => 'max_kursi', 'type' => 'text', 'validation' => 'required', 'width' => 'col-sm-9'];
-		# END FORM DO NOT REMOVE THIS LINE
+			# OLD START FORM
+			//$this->form = [];
+			//$this->form[] = ['label'=>'Nama','name'=>'user_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'user,id'];
+			//$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			# OLD END FORM
 
-		# OLD START FORM
-		//$this->form = [];
-		//$this->form[] = ['label'=>'Sektor','name'=>'region_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'regions,name'];
-		//$this->form[] = ['label'=>'Nomor Meja','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-		//$this->form[] = ['label'=>'Kapasitas','name'=>'capacity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		# OLD END FORM
-
-		/* 
+			/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
 	        | ----------------------------------------------------------------------     
@@ -68,10 +72,10 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 			| @parent_columns = Sparate with comma, e.g : name,created_at
 	        | 
 	        */
-		$this->sub_module = array();
+	        $this->sub_module = array();
 
 
-		/* 
+	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Action Button / Menu
 	        | ----------------------------------------------------------------------     
@@ -82,13 +86,10 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | @showIf 	   = If condition when action show. Use field alias. e.g : [id] == 1
 	        | 
 	        */
-		$this->addaction = array();
-		$this->addaction[] = ['label' => 'Generate QR', 'url' => url('/qrcode/[id]/MJ'), 'icon' => 'fa fa-check', 'color' => 'success'];
-		//$this->addaction[] = ['label' => 'Set Pending', 'url' => CRUDBooster::mainpath('set-status/pending/[id]'), 'icon' => 'fa fa-ban', 'color' => 'warning', 'showIf' => "[status] == 'active'", 'confirmation' => true];
+	        $this->addaction = array();
 
 
-
-		/* 
+	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Button Selected
 	        | ----------------------------------------------------------------------     
@@ -98,10 +99,10 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-		$this->button_selected = array();
+	        $this->button_selected = array();
 
-
-		/* 
+	                
+	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add alert message to this module at overheader
 	        | ----------------------------------------------------------------------     
@@ -109,11 +110,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | @type    = warning,success,danger,info        
 	        | 
 	        */
-		$this->alert        = array();
+	        $this->alert        = array();
+	                
 
-
-
-		/* 
+	        
+	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add more button to header button 
 	        | ----------------------------------------------------------------------     
@@ -122,11 +123,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-		$this->index_button = array();
+	        $this->index_button = array();
 
 
 
-		/* 
+	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Customize Table Row Color
 	        | ----------------------------------------------------------------------     
@@ -134,21 +135,21 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | @color = Default is none. You can use bootstrap success,info,warning,danger,primary.        
 	        | 
 	        */
-		$this->table_row_color = array();
+	        $this->table_row_color = array();     	          
 
-
-		/*
+	        
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | You may use this bellow array to add statistic at dashboard 
 	        | ---------------------------------------------------------------------- 
 	        | @label, @count, @icon, @color 
 	        |
 	        */
-		$this->index_statistic = array();
+	        $this->index_statistic = array();
 
 
 
-		/*
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Add javascript at body 
 	        | ---------------------------------------------------------------------- 
@@ -156,10 +157,10 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-		$this->script_js = NULL;
+	        $this->script_js = NULL;
 
 
-		/*
+            /*
 	        | ---------------------------------------------------------------------- 
 	        | Include HTML Code before index table 
 	        | ---------------------------------------------------------------------- 
@@ -167,11 +168,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-		$this->pre_index_html = null;
-
-
-
-		/*
+	        $this->pre_index_html = null;
+	        
+	        
+	        
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Include HTML Code after index table 
 	        | ---------------------------------------------------------------------- 
@@ -179,11 +180,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->post_index_html = "<p>test</p>";
 	        |
 	        */
-		$this->post_index_html = null;
-
-
-
-		/*
+	        $this->post_index_html = null;
+	        
+	        
+	        
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Include Javascript File 
 	        | ---------------------------------------------------------------------- 
@@ -191,11 +192,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->load_js[] = asset("myfile.js");
 	        |
 	        */
-		$this->load_js = array();
-
-
-
-		/*
+	        $this->load_js = array();
+	        
+	        
+	        
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Add css style at body 
 	        | ---------------------------------------------------------------------- 
@@ -203,11 +204,11 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->style_css = ".style{....}";
 	        |
 	        */
-		$this->style_css = NULL;
-
-
-
-		/*
+	        $this->style_css = NULL;
+	        
+	        
+	        
+	        /*
 	        | ---------------------------------------------------------------------- 
 	        | Include css File 
 	        | ---------------------------------------------------------------------- 
@@ -215,11 +216,13 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	        | $this->load_css[] = asset("myfile.css");
 	        |
 	        */
-		$this->load_css = array();
-	}
+	        $this->load_css = array();
+	        
+	        
+	    }
 
 
-	/*
+	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for button selected
 	    | ---------------------------------------------------------------------- 
@@ -227,67 +230,59 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	    | @button_name = the name of button
 	    |
 	    */
-	public function actionButtonSelected($id_selected, $button_name)
-	{
-		//Your code here
+	    public function actionButtonSelected($id_selected,$button_name) {
+	        //Your code here
+	            
+	    }
 
-	}
 
-
-	/*
+	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate query of index result 
 	    | ---------------------------------------------------------------------- 
 	    | @query = current sql query 
 	    |
 	    */
-	public function hook_query_index(&$query)
-	{
-		//Your code here
+	    public function hook_query_index(&$query) {
+	        //Your code here
+	            
+	    }
 
-	}
-
-	/*
+	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate row of index table html 
 	    | ---------------------------------------------------------------------- 
 	    |
-	    */
-	public function hook_row_index($column_index, &$column_value)
-	{
-		//Your code here
-	}
+	    */    
+	    public function hook_row_index($column_index,&$column_value) {	        
+	    	//Your code here
+	    }
 
-	/*
+	    /*
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate data input before add data is execute
 	    | ---------------------------------------------------------------------- 
 	    | @arr
 	    |
 	    */
-	public function hook_before_add(&$postdata)
-	{
-		//Your code here
+	    public function hook_before_add(&$postdata) {        
+	        //Your code here
 
-	}
+	    }
 
-	/* 
+	    /* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after add public static function called 
 	    | ---------------------------------------------------------------------- 
 	    | @id = last insert id
 	    | 
 	    */
-	public function hook_after_add($id)
-	{
-		$hashstr = QRFactory::generateSTR($id, "MJ");
-		//update in your database
-		$model = Table::find($id);
-		$model->hashcode = $hashstr;
-		$model->save();
-	}
+	    public function hook_after_add($id) {        
+	        //Your code here
 
-	/* 
+	    }
+
+	    /* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for manipulate data input before update data is execute
 	    | ---------------------------------------------------------------------- 
@@ -295,57 +290,50 @@ class AdminManTablesController extends \crocodicstudio\crudbooster\controllers\C
 	    | @id       = current id 
 	    | 
 	    */
-	public function hook_before_edit(&$postdata, $id)
-	{
-		//Your code here
+	    public function hook_before_edit(&$postdata,$id) {        
+	        //Your code here
 
-	}
+	    }
 
-	/* 
+	    /* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after edit public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	public function hook_after_edit($id)
-	{
-		$hashstr = QRFactory::generateSTR($id, "MJ");
-		//update in your database
-		$model = Table::find($id);
-		$model->hashcode = $hashstr;
-		$model->save();
-	}
+	    public function hook_after_edit($id) {
+	        //Your code here 
 
-	/* 
+	    }
+
+	    /* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command before delete public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	public function hook_before_delete($id)
-	{
-		//Your code here
+	    public function hook_before_delete($id) {
+	        //Your code here
 
-	}
+	    }
 
-	/* 
+	    /* 
 	    | ---------------------------------------------------------------------- 
 	    | Hook for execute command after delete public static function called
 	    | ----------------------------------------------------------------------     
 	    | @id       = current id 
 	    | 
 	    */
-	public function hook_after_delete($id)
-	{
-		//Your code here
+	    public function hook_after_delete($id) {
+	        //Your code here
+
+	    }
+
+
+
+	    //By the way, you can still create your own method in here... :) 
+
 
 	}
-
-
-
-	//By the way, you can still create your own method in here... :) 
-
-
-}

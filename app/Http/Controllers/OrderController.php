@@ -27,7 +27,7 @@ class OrderController extends Controller
     public function order(Request $request, $id)
     {
 
-        //dd($request);
+        // dd($request->all());
         $menu = Menu::where('id', $id)->first();
         $tanggal = Carbon::now();
 
@@ -40,6 +40,8 @@ class OrderController extends Controller
             $order->kapan_pesan = $tanggal;
             $order->keranjang_status = 0;
             $order->total_harga = 0;
+            $order->jenis = 'Reservasi';
+            $order->kode = 'RS' . date("ymdHi");
             $order->save();
         }
 
@@ -100,11 +102,12 @@ class OrderController extends Controller
         return redirect('check-out')->with('warning', 'Berhasil Dihapus');
     }
 
-    public function pilihmeja($id)
+    public function pilihmeja(Request $request, $id)
     {
         $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
 
         $tables = Table::where('id', $id)->first();
+        $order->tambahan_kursi = $request->tambah_kursi;
         $order->table_id = $tables->id;
         //dd($order);
         $order->update();
@@ -112,13 +115,28 @@ class OrderController extends Controller
         return redirect('check-out')->with('success', 'Berhasil Pilih Meja');
     }
 
-    public function konfirmasi()
+    public function konfirmasi(Request $request)
     {
+        // dd($request->all());
         $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
         $order_id = $order->id;
         $order->keranjang_status = 1;
+        $order->rencana_tiba = $request->tgl . ' ' . $request->jam . ':' . $request->min;
         $order->update();
 
         return redirect('history/' . $order_id)->with('success', 'Berhasil Check Out');
+    }
+
+    public function buktipembayaran(Request $request)
+    {
+        // dd($request->all());
+        $order = Order::find($request->id);
+        $file = $request->bukti_pembayaran;
+        $file_name = time() . $file->getClientOriginalName();
+        $file->move('uploads/bukti_pembayaran', $file_name);
+        $order->bukti_pembayaran = 'uploads/bukti_pembayaran/' . $file_name;
+        $order->save();
+
+        return redirect('history/' . $order->id)->with('success', 'Berhasil Upload');
     }
 }

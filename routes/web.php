@@ -42,7 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::post('ordermeja/{id}', 'OrderController@pilihmeja');
 Route::get('check-out', 'OrderController@check_out');
 Route::post('delete/check-out', 'OrderController@destroy');
-Route::get('konfirmasi-check-out', 'OrderController@konfirmasi');
+Route::post('konfirmasi-check-out', 'OrderController@konfirmasi');
+Route::post('bukti-pembayaran', 'OrderController@buktipembayaran');
 
 Route::get('qrcode/{id}/{type}', [QRFactory::class, 'generateQR'])->name('generate');
 Route::get('history', 'HistoryController@index');

@@ -15,4 +15,9 @@ class Order extends Model
     {
         return $this->hasMany(\App\User::class, 'user_id');
     }
+
+    public function table()
+    {
+        return $this->belongsTo(\App\Models\Table::class, 'table_id');
+    }
 }

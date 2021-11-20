@@ -24,10 +24,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nomor Meja</th>
-                                        <th>Kapasitas</th>
                                         <th>Sektor</th>
-                                        {{-- <th>Waktu Reservasi</th> --}}
+                                        <th>Nomor Meja</th>
+                                        <th>Info Meja</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -36,21 +35,40 @@
                                     @foreach ($tables as $table)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $table->name }}</td>
-                                            <td>{{ $table->capacity }}</td>
-                                            <td><img src="{{ $table->region->photo }}" class="img-thumbnail" width="15%"
-                                                    alt="">
+                                            <td><img src="{{ $table->region->photo }}" class="img-thumbnail"
+                                                    width="120px" alt="">
                                             </td>
-                                            {{-- <td>
-                                                <input type="text" id="date">
-                                            </td> --}}
+                                            <td>{{ $table->name }}</td>
+
                                             <td>
-                                                <form action="{{ url('ordermeja') }}/{{ $table->id }}" method="post">
+                                                <form id="frm{{ $no }}"
+                                                    action="{{ url('ordermeja/' . $table->id) }}" method="post">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-primary btn-sm">
-                                                        Pilih
-                                                    </button>
+                                                    Kapasitas Umum : {{ $table->jumlah_kursi }}
+                                                    <br>
+                                                    <br>
+                                                    Tambahan Kursi :
+                                                    <input type="number" name="tambah_kursi" id="tambah_kursi" value="0"
+                                                        min="0" max="{{ $table->max_kursi - $table->jumlah_kursi }}">
                                                 </form>
+                                            </td>
+                                            <td>
+                                                <button onclick="
+                                                                            if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
+                                                                            { 
+                                                                                alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                            } 
+                                                                            else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                            { 
+                                                                                alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                            } 
+                                                                            else {
+                                                                                document.getElementById('frm{{ $no }}').submit();
+                                                                            }
+                                                                            
+                                                            " class="btn btn-primary btn-sm">
+                                                    Pilih
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
