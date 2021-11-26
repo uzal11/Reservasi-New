@@ -24,6 +24,7 @@
                                 <tr>
                                     <td>No</td>
                                     <td>Tanggal</td>
+                                    <td>Kode Pesanan</td>
                                     <td>Status</td>
                                     <td>Jumlah Harga</td>
                                     <td>Aksi</td>
@@ -35,9 +36,10 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ date('d M Y H:i', strtotime($order->kapan_pesan)) }}</td>
+                                        <td>{{ $order->kode }}</td>
                                         <td>
                                             @if ($order->keranjang_status == 1)
-                                                Sudah Pesan & Belum Dibayar
+                                                {{ $order->status }}
                                             @else
                                                 Sudah Dibayar
                                             @endif

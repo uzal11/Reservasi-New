@@ -6,6 +6,7 @@ use App\Models\Order;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Models\Region;
+use Carbon\Carbon;
 use App\Models\Table;
 use Auth;
 
@@ -28,6 +29,7 @@ class QRFactory extends Controller
 
     public static function scan($string)
     {
+        $tanggal = Carbon::now();
         $data_table = Table::where('hashcode', $string)->first();
         $data_sector = Region::where('hashcode', $string)->get();
         //cek data_table ada berapa row
@@ -40,7 +42,11 @@ class QRFactory extends Controller
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->table_id = $data_table->id;
-            $order->jenis = 'Dinein';
+            $order->kapan_pesan = $tanggal;
+            $order->table->is_available = 0;
+            $order->status = 'Menunggu Pembayaran';
+            $order->keranjang_status = 0;
+            $order->jenis = 'Dine In';
             $order->kode = 'DI' . date("ymdHi");
             $order->save();
 

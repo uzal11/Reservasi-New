@@ -33,6 +33,7 @@
                                 <tbody>
                                     <?php $no = 1; ?>
                                     @foreach ($tables as $table)
+
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td><img src="{{ $table->region->photo }}" class="img-thumbnail"
@@ -54,19 +55,19 @@
                                             </td>
                                             <td>
                                                 <button onclick="
-                                                                            if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
-                                                                            { 
-                                                                                alert('jumlah tambah kursi melebihi kapasitas!!!'); 
-                                                                            } 
-                                                                            else if (document.getElementById('tambah_kursi').value < 0) 
-                                                                            { 
-                                                                                alert ('kapasitas tidak boleh dibawah nol'); 
-                                                                            } 
-                                                                            else {
-                                                                                document.getElementById('frm{{ $no }}').submit();
-                                                                            }
-                                                                            
-                                                            " class="btn btn-primary btn-sm">
+                                                                                    if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
+                                                                                    { 
+                                                                                        alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                                    } 
+                                                                                    else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                                    { 
+                                                                                        alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                                    } 
+                                                                                    else {
+                                                                                        document.getElementById('frm{{ $no }}').submit();
+                                                                                    }
+                                                                                    
+                                                                    " class="btn btn-primary btn-sm">
                                                     Pilih
                                                 </button>
                                             </td>

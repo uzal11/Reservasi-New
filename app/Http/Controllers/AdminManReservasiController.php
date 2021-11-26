@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use Session;
 use Request;
 use DB;
 use CRUDBooster;
+use App\Models\Order;
 
-class AdminReportOrdersController extends \crocodicstudio\crudbooster\controllers\CBController
+class AdminManReservasiController extends \crocodicstudio\crudbooster\controllers\CBController
 {
 
 	public function cbInit()
@@ -17,9 +17,6 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		# START CONFIGURATION DO NOT REMOVE THIS LINE
 		$this->title_field = "id";
 		$this->limit = "20";
-		// $this->where = "rencana_tiba, >=, NOW()";
-		// $this->where = "rencana_tiba, <=, DATE_ADD(CURDATE(), INTERVAL 2 day)";
-		// $this->where  = 'jenis, = , "Dinein"';
 		$this->orderby = "id,desc";
 		$this->global_privilege = false;
 		$this->button_table_action = true;
@@ -34,21 +31,6 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		$this->button_import = false;
 		$this->button_export = false;
 		$this->table = "orders";
-		// $this->table = "SELECT orders.id, orders.user_id, 
-		// orders.table_id,
-		// orders.kasir_id, 
-		// orders.pelayan_id, 
-		// orders.kode, 
-		// orders.total_harga, 
-		// orders.total_makanan, orders.total_minuman, 
-		// orders.total_harga_makanan, orders.total_harga_minuman, 
-		// orders.kapan_pesan, orders.kapan_bayar, 
-		// orders.rencana_tiba, orders.kapan_tiba, orders.status, 
-		// orders.kapan_pesanan_selesai, orders.jenis, orders.check_in, 
-		// orders.keranjang_status, orders.bukti_pembayaran, 
-		// orders.tambah_kursi 
-		// FROM orders WHERE (orders.rencana_tiba BETWEEN NOW() AND DATE_ADD(CURDATE(), INTERVAL 2 day))";
-
 		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
@@ -56,7 +38,6 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		$this->col[] = ["label" => "Nama", "name" => "user_id", "join" => "users,name"];
 		$this->col[] = ["label" => "Meja", "name" => "table_id", "join" => "tables,name"];
 		$this->col[] = ["label" => "Kode", "name" => "kode"];
-		$this->col[] = ["label" => "Jenis Pemesanan", "name" => "jenis"];
 		$this->col[] = ["label" => "Tanggal Reservasi", "name" => "kapan_pesan"];
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
 		$this->col[] = ["label" => "Status Check In", "name" => "check_in"];
@@ -66,10 +47,10 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = [];
 		$this->form[] = ['label' => 'Check In', 'name' => 'check_in', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => ['Belum Hadir', 'Sudah Hadir']];
-		// $this->form[] = ['label' => 'Nama', 'name' => 'user_id', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'datatable' => 'users,name'];
-		// $this->form[] = ['label' => 'Nomor Meja', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'tables,name'];
-		// $this->form[] = ['label' => 'Nama Kasir', 'name' => 'kasir_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
-		// $this->form[] = ['label' => 'Nama Pelayan', 'name' => 'pelayan_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
+		// $this->form[] = ['label' => 'User Id', 'name' => 'user_id', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'datatable' => 'user,id'];
+		// $this->form[] = ['label' => 'Table Id', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'table,id'];
+		// $this->form[] = ['label' => 'Kasir Id', 'name' => 'kasir_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'kasir,id'];
+		// $this->form[] = ['label' => 'Pelayan Id', 'name' => 'pelayan_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'pelayan,id'];
 		// $this->form[] = ['label' => 'Kode', 'name' => 'kode', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Total Harga', 'name' => 'total_harga', 'type' => 'number', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Total Makanan', 'name' => 'total_makanan', 'type' => 'number', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10'];
@@ -82,34 +63,36 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		// $this->form[] = ['label' => 'Kapan Tiba', 'name' => 'kapan_tiba', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Status', 'name' => 'status', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Kapan Pesanan Selesai', 'name' => 'kapan_pesanan_selesai', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
-		// $this->form[] = ['label' => 'Jenis', 'name' => 'jenis', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => 'Reservasi; Dine In'];
+		// $this->form[] = ['label' => 'Jenis', 'name' => 'jenis', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Check In', 'name' => 'check_in', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Keranjang Status', 'name' => 'keranjang_status', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
 		// $this->form[] = ['label' => 'Bukti Pembayaran', 'name' => 'bukti_pembayaran', 'type' => 'textarea', 'validation' => 'required|string|min:5|max:5000', 'width' => 'col-sm-10'];
-		# END FORM DO NOT REMOVE THIS LINE
+		// $this->form[] = ['label' => 'Tambahan Kursi', 'name' => 'tambahan_kursi', 'type' => 'number', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10'];
+		// # END FORM DO NOT REMOVE THIS LINE
 
 		# OLD START FORM
 		//$this->form = [];
-		//$this->form[] = ['label'=>'User Id','name'=>'user_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'user,id'];
-		//$this->form[] = ['label'=>'Table Id','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'table,id'];
-		//$this->form[] = ['label'=>'Kasir Id','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kasir,id'];
-		//$this->form[] = ['label'=>'Pelayan Id','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'pelayan,id'];
-		//$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Total Harga','name'=>'total_harga','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Total Makanan','name'=>'total_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Total Minuman','name'=>'total_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Total Harga Makanan','name'=>'total_harga_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Total Harga Minuman','name'=>'total_harga_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Kapan Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Check In','name'=>'check_in','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Keranjang Status','name'=>'keranjang_status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Bukti Pembayaran','name'=>'bukti_pembayaran','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+		//$this->form[] = ["label"=>"User Id","name"=>"user_id","type"=>"select2","required"=>TRUE,"validation"=>"required|min:1|max:255","datatable"=>"user,id"];
+		//$this->form[] = ["label"=>"Table Id","name"=>"table_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"table,id"];
+		//$this->form[] = ["label"=>"Kasir Id","name"=>"kasir_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"kasir,id"];
+		//$this->form[] = ["label"=>"Pelayan Id","name"=>"pelayan_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"pelayan,id"];
+		//$this->form[] = ["label"=>"Kode","name"=>"kode","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+		//$this->form[] = ["label"=>"Total Harga","name"=>"total_harga","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+		//$this->form[] = ["label"=>"Total Makanan","name"=>"total_makanan","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+		//$this->form[] = ["label"=>"Total Minuman","name"=>"total_minuman","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+		//$this->form[] = ["label"=>"Total Harga Makanan","name"=>"total_harga_makanan","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+		//$this->form[] = ["label"=>"Total Harga Minuman","name"=>"total_harga_minuman","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+		//$this->form[] = ["label"=>"Kapan Pesan","name"=>"kapan_pesan","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+		//$this->form[] = ["label"=>"Kapan Bayar","name"=>"kapan_bayar","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+		//$this->form[] = ["label"=>"Rencana Tiba","name"=>"rencana_tiba","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+		//$this->form[] = ["label"=>"Kapan Tiba","name"=>"kapan_tiba","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+		//$this->form[] = ["label"=>"Status","name"=>"status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+		//$this->form[] = ["label"=>"Kapan Pesanan Selesai","name"=>"kapan_pesanan_selesai","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s"];
+		//$this->form[] = ["label"=>"Jenis","name"=>"jenis","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+		//$this->form[] = ["label"=>"Check In","name"=>"check_in","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+		//$this->form[] = ["label"=>"Keranjang Status","name"=>"keranjang_status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+		//$this->form[] = ["label"=>"Bukti Pembayaran","name"=>"bukti_pembayaran","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+		//$this->form[] = ["label"=>"Tambahan Kursi","name"=>"tambahan_kursi","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
 		# OLD END FORM
 
 		/* 
@@ -296,10 +279,10 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 	    */
 	public function hook_query_index(&$query)
 	{
-		$from = date('Y-m-d');
-		$to = date('Y-m-d', strtotime($from . ' + 2 days'));
+		//Your code here
 		$query->where('orders.jenis', "Reservasi")
-			->whereBetween("orders.rencana_tiba", [$from, $to]);
+			// ->where("orders.created_at", $tgl)
+			->whereDate('orders.created_at', '=', date('Y-m-d'));
 	}
 
 	/*
@@ -336,7 +319,6 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 	public function hook_after_add($id)
 	{
 		//Your code here
-
 
 	}
 

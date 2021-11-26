@@ -7,59 +7,92 @@ use Request;
 use DB;
 use CRUDBooster;
 
-class AdminManNewMenusController extends \crocodicstudio\crudbooster\controllers\CBController
+class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers\CBController
 {
 
 	public function cbInit()
 	{
 
-		# START CONFIGURATION DO NOT REMOVE THIS LINE
-		$this->title_field = "name";
-		$this->limit = "20";
-		$this->orderby = "id,desc";
-		$this->global_privilege = false;
-		$this->button_table_action = true;
-		$this->button_bulk_action = true;
-		$this->button_action_style = "button_icon";
-		$this->button_add = true;
-		$this->button_edit = true;
-		$this->button_delete = true;
-		$this->button_detail = true;
-		$this->button_show = true;
-		$this->button_filter = true;
-		$this->button_import = false;
-		$this->button_export = false;
-		$this->table = "menus";
-		# END CONFIGURATION DO NOT REMOVE THIS LINE
+			# START CONFIGURATION DO NOT REMOVE THIS LINE
+			$this->title_field = "id";
+			$this->limit = "20";
+			$this->orderby = "id,desc";
+			$this->global_privilege = false;
+			$this->button_table_action = true;
+			$this->button_bulk_action = true;
+			$this->button_action_style = "button_icon";
+			$this->button_add = true;
+			$this->button_edit = true;
+			$this->button_delete = true;
+			$this->button_detail = true;
+			$this->button_show = true;
+			$this->button_filter = true;
+			$this->button_import = false;
+			$this->button_export = false;
+			$this->table = "orders";
+			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
-		# START COLUMNS DO NOT REMOVE THIS LINE
-		$this->col = [];
-		$this->col[] = ["label" => "Nama Menu", "name" => "name"];
-		$this->col[] = ["label" => "Harga", "name" => "price"];
-		$this->col[] = ["label" => "Foto", "name" => "photo", "image" => true];
-		$this->col[] = ["label" => "Deskripsi", "name" => "description"];
-		$this->col[] = ["label" => "Kategori", "name" => "cathegory"];
-		# END COLUMNS DO NOT REMOVE THIS LINE
+			# START COLUMNS DO NOT REMOVE THIS LINE
+			$this->col = [];
+			$this->col[] = ["label"=>"Nama","name"=>"user_id","join"=>"users,name"];
+			$this->col[] = ["label"=>"Meja","name"=>"table_id","join"=>"tables,name"];
+			$this->col[] = ["label"=>"Kode","name"=>"kode"];
+			$this->col[] = ["label"=>"Jenis","name"=>"jenis"];
+			$this->col[] = ["label"=>"Total Harga","name"=>"total_harga"];
+			$this->col[] = ["label"=>"Status Pemesanan","name"=>"status"];
+			# END COLUMNS DO NOT REMOVE THIS LINE
 
-		# START FORM DO NOT REMOVE THIS LINE
-		$this->form = [];
-		$this->form[] = ['label' => 'Nama Menu', 'name' => 'name', 'type' => 'text', 'validation' => 'required|string|min:3|max:70', 'width' => 'col-sm-10', 'placeholder' => 'You can only enter the letter only'];
-		$this->form[] = ['label' => 'Harga', 'name' => 'price', 'type' => 'number', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10'];
-		$this->form[] = ['label' => 'Foto', 'name' => 'photo', 'type' => 'upload', 'validation' => 'required|image|max:3000', 'width' => 'col-sm-10', 'help' => 'File types support : JPG, JPEG, PNG, GIF, BMP'];
-		$this->form[] = ['label' => 'Deskripsi', 'name' => 'description', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
-		$this->form[] = ['label' => 'Kategori', 'name' => 'cathegory', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => 'Makanan;Minuman;Snack'];
-		# END FORM DO NOT REMOVE THIS LINE
+			# START FORM DO NOT REMOVE THIS LINE
+			$this->form = [];
+			$this->form[] = ['label'=>'User Id','name'=>'user_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'users,name'];
+			$this->form[] = ['label'=>'Table Id','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
+			$this->form[] = ['label'=>'Kasir Id','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Pelayan Id','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Total Harga','name'=>'total_harga','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Total Makanan','name'=>'total_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Total Minuman','name'=>'total_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Total Harga Makanan','name'=>'total_harga_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Total Harga Minuman','name'=>'total_harga_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Check In','name'=>'check_in','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Keranjang Status','name'=>'keranjang_status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Bukti Pembayaran','name'=>'bukti_pembayaran','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Tambahan Kursi','name'=>'tambahan_kursi','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			# END FORM DO NOT REMOVE THIS LINE
 
-		# OLD START FORM
-		//$this->form = [];
-		//$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-		//$this->form[] = ['label'=>'Price','name'=>'price','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Photo','name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
-		//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		//$this->form[] = ['label'=>'Cathegory','name'=>'cathegory','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-		# OLD END FORM
+			# OLD START FORM
+			//$this->form = [];
+			//$this->form[] = ['label'=>'User Id','name'=>'user_id','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'users,name'];
+			//$this->form[] = ['label'=>'Table Id','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
+			//$this->form[] = ['label'=>'Kasir Id','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Pelayan Id','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total Harga','name'=>'total_harga','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total Makanan','name'=>'total_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total Minuman','name'=>'total_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total Harga Makanan','name'=>'total_harga_makanan','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Total Harga Minuman','name'=>'total_harga_minuman','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Check In','name'=>'check_in','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Keranjang Status','name'=>'keranjang_status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Bukti Pembayaran','name'=>'bukti_pembayaran','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Tambahan Kursi','name'=>'tambahan_kursi','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			# OLD END FORM
 
-		/* 
+			/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
 	        | ----------------------------------------------------------------------     
@@ -244,7 +277,10 @@ class AdminManNewMenusController extends \crocodicstudio\crudbooster\controllers
 	public function hook_query_index(&$query)
 	{
 		//Your code here
-
+		$tgl = date('Y-m-d');
+		$query->where('orders.jenis', "Dine In")
+			// ->where("orders.created_at", $tgl)
+			->whereDate('orders.created_at', '=', date('Y-m-d'));
 	}
 
 	/*

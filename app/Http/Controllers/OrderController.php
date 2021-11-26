@@ -41,6 +41,8 @@ class OrderController extends Controller
             $order->keranjang_status = 0;
             $order->total_harga = 0;
             $order->jenis = 'Reservasi';
+            $order->status = 'Menunggu Pembayaran';
+            $order->check_in = 'Belum Hadir';
             $order->kode = 'RS' . date("ymdHi");
             $order->save();
         }
@@ -67,6 +69,17 @@ class OrderController extends Controller
             $menu_order->update();
         }
 
+        // if ($menu->cathegory == 'Makanan') {
+        //     $order->total_makanan = $menu_order->jumlah;
+        //     $order->update();
+        // } else if ($menu->cathegory == 'Minuman') {
+        //     $order->total_minuman = $menu_order->jumlah;
+        //     $order->update();
+        // } else {
+        //     $order->total_makanan = $menu_order->jumlah;
+        //     $order->update();
+        // }
+
         //jumlah total
         $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
         $order->total_harga = $order->total_harga + $menu->price * $request->jumlah_order;
@@ -83,7 +96,7 @@ class OrderController extends Controller
         if (!empty($order)) {
             $menu_orders = MenuOrder::where('order_id', $order->id)->get();
         }
-        $tables = Table::where('id', $order->table_id)->get();
+        $tables = Table::where('id', $order->table_id)->where('is_available', '')->get();
 
         return view('order.check_out', compact('order', 'menu_orders', 'tables'));
     }
@@ -107,6 +120,7 @@ class OrderController extends Controller
         $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
 
         $tables = Table::where('id', $id)->first();
+
         $order->tambahan_kursi = $request->tambah_kursi;
         $order->table_id = $tables->id;
         //dd($order);
@@ -122,6 +136,7 @@ class OrderController extends Controller
         $order_id = $order->id;
         $order->keranjang_status = 1;
         $order->rencana_tiba = $request->tgl . ' ' . $request->jam . ':' . $request->min;
+
         $order->update();
 
         return redirect('history/' . $order_id)->with('success', 'Berhasil Check Out');

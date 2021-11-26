@@ -37,8 +37,9 @@ class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controller
 		$this->col[] = ["label" => "Nama Pelanggan", "name" => "(SELECT users.name FROM menu_orders JOIN orders ON menu_orders.order_id = orders.id JOIN users ON orders.user_id = users.id LIMIT 1) as nama"];
 		$this->col[] = ["label" => "Kode Pesanan", "name" => "order_id", "join" => "orders,kode"];
 		$this->col[] = ["label" => "Nama Menu", "name" => "menu_id", "join" => "menus,name"];
-		$this->col[] = ["label" => "Status Pesanan", "name" => "order_id", "join" => "orders,status"];
 		$this->col[] = ["label" => "Jumlah", "name" => "id", "join" => "menu_orders,jumlah"];
+		$this->col[] = ["label" => "Status Pesanan", "name" => "order_id", "join" => "orders,status"];
+
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE
