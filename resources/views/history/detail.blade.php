@@ -48,7 +48,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $menu_order->menu->name }}</td>
                                                 <td>{{ $menu_order->jumlah }}</td>
-                                                <td>{{ $menu_order->menu->price }}</td>
+                                                <td>Rp. {{ number_format($menu_order->menu->price) }}</td>
                                                 <td>Rp. {{ number_format($menu_order->total_harga) }}</td>
                                             </tr>
                                         @endforeach

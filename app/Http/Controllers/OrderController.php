@@ -117,7 +117,22 @@ class OrderController extends Controller
 
     public function pilihmeja(Request $request, $id)
     {
-        $order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+        $tanggal = Carbon::now();
+
+        $cek_order = Order::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+        //simpan ke database orders
+        if (empty($cek_order)) {
+            $order = new Order();
+            $order->user_id = Auth::user()->id;
+            $order->kapan_pesan = $tanggal;
+            $order->keranjang_status = 0;
+            $order->total_harga = 0;
+            $order->jenis = 'Reservasi';
+            $order->status = 'Menunggu Pembayaran';
+            $order->check_in = 'Belum Hadir';
+            $order->kode = 'RS' . date("mdHi");
+            $order->save();
+        }
 
         $tables = Table::where('id', $id)->first();
 

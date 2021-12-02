@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('pesan') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ url('home') }}" class="btn btn-primary">Kembali</a>
 
             </div>
             <div class="col-md-12 mt-2">
@@ -55,19 +55,19 @@
                                             </td>
                                             <td>
                                                 <button onclick="
-                                                                                    if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
-                                                                                    { 
-                                                                                        alert('jumlah tambah kursi melebihi kapasitas!!!'); 
-                                                                                    } 
-                                                                                    else if (document.getElementById('tambah_kursi').value < 0) 
-                                                                                    { 
-                                                                                        alert ('kapasitas tidak boleh dibawah nol'); 
-                                                                                    } 
-                                                                                    else {
-                                                                                        document.getElementById('frm{{ $no }}').submit();
-                                                                                    }
-                                                                                    
-                                                                    " class="btn btn-primary btn-sm">
+                                                                                        if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
+                                                                                        { 
+                                                                                            alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                                        } 
+                                                                                        else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                                        { 
+                                                                                            alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                                        } 
+                                                                                        else {
+                                                                                            document.getElementById('frm{{ $no }}').submit();
+                                                                                        }
+                                                                                        
+                                                                        " class="btn btn-primary btn-sm">
                                                     Pilih
                                                 </button>
                                             </td>

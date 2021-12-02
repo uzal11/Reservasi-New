@@ -48,6 +48,8 @@ Route::post('bukti-pembayaran', 'OrderController@buktipembayaran');
 Route::get('qrcode/{id}/{type}', [QRFactory::class, 'generateQR'])->name('generate');
 Route::get('history', 'HistoryController@index');
 Route::get('history/{id}', 'HistoryController@detail');
+
+Route::get('pesanan/{id}', 'PesananAdminController@pesanan');
 /*Nanti dilindungi dengan admin*/
 
 

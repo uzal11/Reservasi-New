@@ -35,7 +35,7 @@
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ date('d M Y H:i', strtotime($order->kapan_pesan)) }}</td>
+                                        <td>{{ date('d M Y H:i', strtotime($order->created_at)) }}</td>
                                         <td>{{ $order->kode }}</td>
                                         <td>
                                             @if ($order->keranjang_status == 1)

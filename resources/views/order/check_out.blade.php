@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('pesan') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ url('pesan') }}" class="btn btn-primary">Pilih Menu</a>
 
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('pesan') }}"></a>Pesan</li>
@@ -21,7 +21,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
+                                <th>Nama Menu</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
                                 <th>Total Harga</th>
@@ -35,7 +35,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $menu_order->menu->name }}</td>
                                     <td>{{ $menu_order->jumlah }}</td>
-                                    <td>{{ $menu_order->menu->price }}</td>
+                                    <td>Rp. {{ number_format($menu_order->menu->price) }}</td>
                                     <td>Rp. {{ number_format($menu_order->total_harga) }}</td>
                                     <td>
                                         <form action="{{ url('delete/check-out') }}" method="post">

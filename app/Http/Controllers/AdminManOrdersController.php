@@ -45,6 +45,7 @@ class AdminManOrdersController extends \crocodicstudio\crudbooster\controllers\C
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
 		$this->col[] = ["label" => "Tambahan Kursi", "name" => "tambahan_kursi"];
 		$this->col[] = ["label" => "Status", "name" => "status"];
+		$this->col[] = ["label" => "Bukti Pembayaran", "name" => "bukti_pembayaran", "image" => true];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE
@@ -105,6 +106,7 @@ class AdminManOrdersController extends \crocodicstudio\crudbooster\controllers\C
 	        | 
 	        */
 		$this->addaction = array();
+		$this->addaction[] = ['label' => 'Detail', 'url' => url('pesanan/[id]'), 'icon' => 'fa fa-check', 'color' => 'success'];
 
 
 		/* 

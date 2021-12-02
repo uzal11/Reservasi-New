@@ -61,6 +61,7 @@ class AdminReportOrdersController extends \crocodicstudio\crudbooster\controller
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
 		$this->col[] = ["label" => "Status Check In", "name" => "check_in"];
 		$this->col[] = ["label" => "Kapan Tiba", "name" => "kapan_tiba"];
+		$this->col[] = ["label" => "Status", "name" => "status"];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE
