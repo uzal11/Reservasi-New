@@ -29,13 +29,13 @@ class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers
 		$this->button_filter = true;
 		$this->button_import = false;
 		$this->button_export = false;
-		$this->table = "orders";
+		$this->table = "pesanans";
 		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
 		$this->col = [];
 		$this->col[] = ["label" => "Nama", "name" => "user_id", "join" => "users,name"];
-		$this->col[] = ["label" => "Meja", "name" => "table_id", "join" => "tables,name"];
+		$this->col[] = ["label" => "Meja", "name" => "meja_id", "join" => "mejas,nama"];
 		$this->col[] = ["label" => "Kode", "name" => "kode"];
 		$this->col[] = ["label" => "Jenis", "name" => "jenis"];
 		$this->col[] = ["label" => "Total Harga", "name" => "total_harga"];
@@ -45,7 +45,7 @@ class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = [];
 		$this->form[] = ['label' => 'User Id', 'name' => 'user_id', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'datatable' => 'users,name'];
-		$this->form[] = ['label' => 'Table Id', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'tables,name'];
+		$this->form[] = ['label' => 'Table Id', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'mejas,nama'];
 		$this->form[] = ['label' => 'Kasir Id', 'name' => 'kasir_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
 		$this->form[] = ['label' => 'Pelayan Id', 'name' => 'pelayan_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
 		$this->form[] = ['label' => 'Kode', 'name' => 'kode', 'type' => 'text', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
@@ -119,6 +119,7 @@ class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers
 	        | 
 	        */
 		$this->addaction = array();
+		$this->addaction[] = ['label' => 'Detail', 'url' => url('pesanan/[id]'), 'icon' => 'fa fa-check', 'color' => 'success'];
 
 
 		/* 
@@ -278,9 +279,9 @@ class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers
 	{
 		//Your code here
 		// $tgl = date('Y-m-d');
-		$query->where('orders.jenis', "Dine In")
-			// ->where("orders.created_at", $tgl)
-			->whereDate('orders.created_at', '=', date('Y-m-d'));
+		$query->where('pesanans.jenis', "Dine In")
+			// ->where("pesanans.created_at", $tgl)
+			->whereDate('pesanans.created_at', '=', date('Y-m-d'));
 	}
 
 	/*

@@ -71,11 +71,11 @@
         alert(e);
     });
 </script>
-<div class="btn-group btn-group-toggle mb-5 align-items-center d-flex justify-content-center" data-toggle="buttons">
-    <label class="btn btn-primary active">
+<div class="btn-group btn-group-toggle mb-5" data-toggle="buttons">
+    <label class="btn btn-primary active" style="text-align: center;">
         <input type="radio" name="options" value="1" autocomplete="off" checked> Front Camera
     </label>
-    <label class="btn btn-success">
+    <label class="btn btn-secondary" style="text-align: center;">
         <input type="radio" name="options" value="2" autocomplete="off"> Back Camera
     </label>
 </div>

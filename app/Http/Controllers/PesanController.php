@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Menu;
 
 use Illuminate\Http\Request;
 
-class ReservasiController extends Controller
+class PesanController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -25,6 +26,6 @@ class ReservasiController extends Controller
     public function index()
     {
         $menus = Menu::paginate(20);
-        return view('pesan',compact('menus'));
+        return view('pesan', compact('menus'));
     }
 }

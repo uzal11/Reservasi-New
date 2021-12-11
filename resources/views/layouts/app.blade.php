@@ -47,7 +47,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/table') }}">Reservasi</a>
+                            <a class="nav-link" href="{{ url('/meja') }}">Reservasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/scan') }}">Pesan Di Tempat</a>
@@ -72,13 +72,13 @@
                                     <a href="{{ route('profile.edit') }}" class="dropdown-item">
                                         Edit Profile
                                     </a>
-                                    <a href="{{ url('history') }}" class="dropdown-item">
+                                    <a href="{{ url('seluruh_riwayat') }}" class="dropdown-item">
                                         Riwayat Pemesanan
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -91,11 +91,11 @@
                         @endguest
                         <li class="nav-item">
                             <?php
-                            $order_utama = \App\Models\Order::where('user_id', Auth::user()->id)
+                            $pesanan_utama = \App\Models\Pesanan::where('user_id', Auth::user()->id)
                                 ->where('keranjang_status', 0)
                                 ->first();
-                            if (!empty($order_utama)) {
-                                $notif = \App\Models\MenuOrder::where('order_id', $order_utama->id)->count();
+                            if (!empty($pesanan_utama)) {
+                                $notif = \App\Models\MenuPesanan::where('pesanan_id', $pesanan_utama->id)->count();
                             }
                             
                             ?>

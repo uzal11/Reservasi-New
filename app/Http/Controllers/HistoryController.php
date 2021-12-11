@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meja;
 use App\Models\Menu;
-use App\Models\MenuOrder;
-use App\Models\Order;
-use App\Models\Table;
+use App\Models\MenuPesanan;
+use App\Models\Pesanan;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -19,17 +19,30 @@ class HistoryController extends Controller
 
     public function index()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->where('keranjang_status', '!=', 0)->orderBy('created_at', 'DESC')->get();
-        return view('history.index', compact('orders'));
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '=', 'Selesai')->orderBy('created_at', 'DESC')->get();
+        return view('history.historyselesai', compact('pesanans'));
     }
 
     public function detail($id)
     {
-        $order = Order::where('id', $id)->first();
-        $menu_orders = MenuOrder::where('order_id', $order->id)->get();
+        $pesanan = Pesanan::where('id', $id)->first();
+        $menu_pesanans = MenuPesanan::where('pesanan_id', $pesanan->id)->get();
 
-        $tables = Table::where('id', $order->table_id)->get();
+        $mejas = Meja::where('id', $pesanan->table_id)->get();
 
-        return view('history.detail', compact('order', 'menu_orders', 'tables'));
+        return view('history.detail', compact('pesanan', 'menu_pesanans', 'mejas'));
+    }
+
+
+    public function diproses()
+    {
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '=', 'Diproses')->orderBy('created_at', 'DESC')->get();
+        return view('history.diproses', compact('pesanans'));
+    }
+
+    public function seluruhriwayat()
+    {
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('keranjang_status', '!=', 0)->orderBy('created_at', 'DESC')->get();
+        return view('history.seluruhriwayat', compact('pesanans'));
     }
 }

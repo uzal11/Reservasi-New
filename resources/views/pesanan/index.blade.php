@@ -20,18 +20,18 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4> {{ $menu->name }}</h4>
+                                <h4> {{ $menu->nama }}</h4>
                                 <table class="table">
                                     <tbody>
                                         <tr>
                                             <td>Harga</td>
                                             <td>:</td>
-                                            <td>Rp. {{ number_format($menu->price) }}</td>
+                                            <td>Rp. {{ number_format($menu->harga) }}</td>
                                         </tr>
                                         <tr>
                                             <td>Deskripsi</td>
                                             <td>:</td>
-                                            <td>{{ $menu->description }}</td>
+                                            <td>{{ $menu->deskripsi }}</td>
                                         </tr>
 
                                         <tr>
@@ -40,7 +40,8 @@
                                             <td>
                                                 <form method="post" action="{{ url('order') }}/{{ $menu->id }}">
                                                     @csrf
-                                                    <input type="text" name="jumlah_order" class="form-control" required>
+                                                    <input type="number" min="1" name="jumlah_pesanan"
+                                                        class="form-control" required>
                                                     <button type="submit" class="btn btn-success mt-3">Pesan</button>
                                             </td>
                                         </tr>

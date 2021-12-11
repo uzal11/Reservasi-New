@@ -6,7 +6,7 @@ use Session;
 use Request;
 use DB;
 use CRUDBooster;
-use App\Models\Order;
+use App\Models\Pesanan;
 
 class AdminManReservasiController extends \crocodicstudio\crudbooster\controllers\CBController
 {
@@ -30,13 +30,13 @@ class AdminManReservasiController extends \crocodicstudio\crudbooster\controller
 		$this->button_filter = true;
 		$this->button_import = false;
 		$this->button_export = false;
-		$this->table = "orders";
+		$this->table = "pesanans";
 		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
 		$this->col = [];
 		$this->col[] = ["label" => "Nama", "name" => "user_id", "join" => "users,name"];
-		$this->col[] = ["label" => "Meja", "name" => "table_id", "join" => "tables,name"];
+		$this->col[] = ["label" => "Meja", "name" => "meja_id", "join" => "mejas,nama"];
 		$this->col[] = ["label" => "Kode", "name" => "kode"];
 		$this->col[] = ["label" => "Tanggal Reservasi", "name" => "kapan_pesan"];
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
@@ -283,9 +283,9 @@ class AdminManReservasiController extends \crocodicstudio\crudbooster\controller
 	public function hook_query_index(&$query)
 	{
 		//Your code here
-		$query->where('orders.jenis', "Reservasi")
-			// ->where("orders.created_at", $tgl)
-			->whereDate('orders.created_at', '=', date('Y-m-d'));
+		$query->where('pesanans.jenis', "Reservasi")
+			// ->where("pesanans.created_at", $tgl)
+			->whereDate('pesanans.created_at', '=', date('Y-m-d'));
 	}
 
 	/*
@@ -336,9 +336,9 @@ class AdminManReservasiController extends \crocodicstudio\crudbooster\controller
 	public function hook_before_edit(&$postdata, $id)
 	{
 		//Your code here
-		$order = Order::whereId($id)->first();
-		$order->kapan_tiba = date("Y-m-d H:i:s");
-		$order->update();
+		$pesanan = Pesanan::whereId($id)->first();
+		$pesanan->kapan_tiba = date("Y-m-d H:i:s");
+		$pesanan->update();
 	}
 
 	/* 

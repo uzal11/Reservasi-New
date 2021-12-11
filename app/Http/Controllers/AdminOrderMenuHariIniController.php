@@ -29,12 +29,12 @@ class AdminOrderMenuHariIniController extends \crocodicstudio\crudbooster\contro
 		$this->button_filter = true;
 		$this->button_import = false;
 		$this->button_export = false;
-		$this->table = "menu_orders";
+		$this->table = "menu_pesanans";
 		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
 		$this->col = [];
-		$this->col[] = ["label" => "Nama Pelanggan", "name" => "(SELECT users.name FROM menu_orders JOIN orders ON menu_orders.order_id = orders.id JOIN users ON orders.user_id = users.id LIMIT 1) as nama"];
+		$this->col[] = ["label" => "Nama Pelanggan", "name" => "(SELECT users.name FROM menu_pesanans JOIN orders ON menu_pesanans.order_id = orders.id JOIN users ON orders.user_id = users.id LIMIT 1) as nama"];
 		$this->col[] = ["label" => "Menu", "name" => "menu_id", "join" => "menus,name"];
 		$this->col[] = ["label" => "Total Harga", "name" => "total_harga"];
 		$this->col[] = ["label" => "Jumlah", "name" => "jumlah"];
@@ -241,7 +241,7 @@ class AdminOrderMenuHariIniController extends \crocodicstudio\crudbooster\contro
 	public function hook_query_index(&$query)
 	{
 		//Your code here
-		$query->whereDate('menu_orders.created_at', '=', date('Y-m-d'));
+		$query->whereDate('menu_pesanans.created_at', '=', date('Y-m-d'));
 	}
 
 	/*

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Reservasi</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    
+
     <!-- Styles -->
     <style>
         html,
@@ -95,10 +95,10 @@
                     <div class="card">
                         <img src="{{ $menu->photo }}" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">{{ $menu->name }}</h5>
-                            <p class="card-text">{{ $menu->description }}</p>
+                            <h5 class="card-title">{{ $menu->nama }}</h5>
+                            <p class="card-text">{{ $menu->deskripsi }}</p>
                             <p class="card-text">
-                                <strong> Harga Rp.{{ number_format($menu->price) }}</strong>
+                                <strong> Harga Rp.{{ number_format($menu->harga) }}</strong>
                             </p>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
                 </nav>
             </div>
             <div class="col-md-12">
-                @if (!empty($order))
+                @if (!empty($pesanan))
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -30,17 +30,17 @@
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
-                            @foreach ($menu_orders as $menu_order)
+                            @foreach ($menu_pesanans as $menu_pesanan)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $menu_order->menu->name }}</td>
-                                    <td>{{ $menu_order->jumlah }}</td>
-                                    <td>Rp. {{ number_format($menu_order->menu->price) }}</td>
-                                    <td>Rp. {{ number_format($menu_order->total_harga) }}</td>
+                                    <td>{{ $menu_pesanan->menu->nama }}</td>
+                                    <td>{{ $menu_pesanan->jumlah }}</td>
+                                    <td>Rp. {{ number_format($menu_pesanan->menu->harga) }}</td>
+                                    <td>Rp. {{ number_format($menu_pesanan->total_harga) }}</td>
                                     <td>
                                         <form action="{{ url('delete/check-out') }}" method="post">
                                             @csrf
-                                            <input type="hidden" name="menu_order_id" value="{{ $menu_order->id }}">
+                                            <input type="hidden" name="menu_pesanan_id" value="{{ $menu_pesanan->id }}">
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Anda yakin ingin menghapus menu?');"><i
                                                     class="fa fa-trash"></i>
@@ -51,7 +51,7 @@
                             @endforeach
                             <tr>
                                 <td colspan="4" align="right"><strong>Sub Total :</strong> </td>
-                                <td> <strong>Rp. {{ number_format($order->total_harga) }}</strong> </td>
+                                <td> <strong>Rp. {{ number_format($pesanan->total_harga) }}</strong> </td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -62,7 +62,7 @@
                     onsubmit="return confirm('Anda yakin ingin check out?');">
                     @csrf
                     <h3>
-                        <a href="{{ url('/table') }}" class="btn btn-primary">Pilih Meja dan
+                        <a href="{{ url('/meja') }}" class="btn btn-primary">Pilih Meja dan
                             Sektor</a>
                     </h3>
                     <table class="table table-striped">
@@ -121,19 +121,19 @@
                                         @endfor
                                     </select>
                                 </td>
-                                <td>{{ $order->table->name }}</td>
-                                <td>Jumlah Kursi : {{ $order->table->jumlah_kursi }}
-                                    {{ '(+' . $order->tambahan_kursi . ')' }}
+                                <td>{{ $pesanan->meja->nama }}</td>
+                                <td>Jumlah Kursi : {{ $pesanan->meja->jumlah_kursi }}
+                                    {{ '(+' . $pesanan->tambahan_kursi . ')' }}
                                 </td>
-                                <td>{{ $order->table->region->name }}</td>
-                                <td><img src="{{ $order->table->region->photo }}" width="120px" alt=""></td>
+                                <td>{{ $pesanan->meja->sektor->nama }}</td>
+                                <td><img src="{{ $pesanan->meja->sektor->photo }}" width="120px" alt=""></td>
                             </tr>
                             <tr>
 
                             </tr>
                         </tbody>
                     </table>
-                    @if (!empty($order->table_id))
+                    @if (!empty($pesanan->meja_id))
                         <h3>
                             <button onclick="document.getElementById('formCO').submit();" class="btn btn-success">
                                 <i class="fa fa-shopping-cart"></i>Check Out</button>

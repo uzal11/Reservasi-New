@@ -34,11 +34,11 @@ class AdminManNewMenusController extends \crocodicstudio\crudbooster\controllers
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
 		$this->col = [];
-		$this->col[] = ["label" => "Nama Menu", "name" => "name"];
-		$this->col[] = ["label" => "Harga", "name" => "price"];
+		$this->col[] = ["label" => "Nama Menu", "name" => "nama"];
+		$this->col[] = ["label" => "Harga", "name" => "harga"];
 		$this->col[] = ["label" => "Foto", "name" => "photo", "image" => true];
-		$this->col[] = ["label" => "Deskripsi", "name" => "description"];
-		$this->col[] = ["label" => "Kategori", "name" => "cathegory"];
+		$this->col[] = ["label" => "Deskripsi", "name" => "deskripsi"];
+		$this->col[] = ["label" => "Kategori", "name" => "kategori"];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE

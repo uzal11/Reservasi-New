@@ -20,16 +20,16 @@
             <div class="col-md-12">
                 <div class="card body">
                     <h3>Sukses Check Out <button style="float: right; margin:5px 5px 0px 0px;" class="btn btn-primary"
-                            data-toggle="modal" data-target="#myModal">Uploud
+                            data-toggle="modal" data-target="#myModal">Upload
                             Bukti Pembayaran</button></h3>
-                    <label></label>
-                    <h5>Pesanan anda berhasil check out selanjutnya silahkan transfer dan uploud bukti pembayaran</h5>
+                    <label>Kode Pesanan: {{ $pesanan->kode }}</label>
+                    <h5>Pesanan anda berhasil check out selanjutnya silahkan transfer dan upload bukti pembayaran</h5>
 
                 </div>
                 <div class="card mt-2">
                     <div class="card-header">
                         <h3><i class="fa fa-shopping-cart"></i>Detail Pemesanan</h3>
-                        @if (!empty($order))
+                        @if (!empty($pesanan))
                             <div class="body">
                                 <table class="table table-striped">
                                     <thead>
@@ -43,20 +43,20 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        @foreach ($menu_orders as $menu_order)
+                                        @foreach ($menu_pesanans as $menu_pesanan)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $menu_order->menu->name }}</td>
-                                                <td>{{ $menu_order->jumlah }}</td>
-                                                <td>Rp. {{ number_format($menu_order->menu->price) }}</td>
-                                                <td>Rp. {{ number_format($menu_order->total_harga) }}</td>
+                                                <td>{{ $menu_pesanan->menu->nama }}</td>
+                                                <td>{{ $menu_pesanan->jumlah }}</td>
+                                                <td>Rp. {{ number_format($menu_pesanan->menu->harga) }}</td>
+                                                <td>Rp. {{ number_format($menu_pesanan->total_harga) }}</td>
                                             </tr>
                                         @endforeach
                                         <tr>
                                             <td colspan="4" align="right"><strong>Sub Total :</strong> </td>
-                                            <td> <strong>Rp. {{ number_format($order->total_harga) }}</strong> </td>
+                                            <td> <strong>Rp. {{ number_format($pesanan->total_harga) }}</strong> </td>
                                         </tr>
-                                        @if (empty($order->rencana_tiba))
+                                        @if (empty($pesanan->rencana_tiba))
                                             <tr>
                                                 <td><a href="{{ url('/table') }}" class="btn btn-primary">Pilih Meja dan
                                                         Sektor</a></td>
@@ -72,14 +72,15 @@
                                         </tr>
                                         {{-- @foreach ($tables as $table) --}}
                                         <tr>
-                                            <td>{{ $order->table->name }}</td>
-                                            <td>{{ $order->table->capacity }}</td>
-                                            <td>{{ $order->table->region->name }}</td>
-                                            <td><img src="{{ asset($order->table->region->photo) }}" width="15%" alt="">
+                                            <td>{{ $pesanan->meja->nama }}</td>
+                                            <td>{{ $pesanan->meja->jumlah_kursi }}</td>
+                                            <td>{{ $pesanan->meja->sektor->nama }}</td>
+                                            <td><img src="{{ asset($pesanan->meja->sektor->photo) }}" width="120px"
+                                                    alt="">
                                             </td>
-                                            <td><img src="{{ asset($order->bukti_pembayaran) }}" width="15%" alt="">
+                                            <td><img src="{{ asset($pesanan->bukti_pembayaran) }}" width="120px" alt="">
                                             </td>
-                                            <td>{{ date('d M Y H:i', strToTime($order->rencana_tiba)) }}</td>
+                                            <td>{{ date('d M Y H:i', strToTime($pesanan->rencana_tiba)) }}</td>
                                         </tr>
                                         {{-- @endforeach --}}
                                     </tbody>
@@ -104,7 +105,7 @@
                 </div>
                 <form action="{{ url('bukti-pembayaran') }}" method="POST" enctype='multipart/form-data'>
                     @csrf
-                    <input type="hidden" id="id" name="id" value="{{ $order->id }}">
+                    <input type="hidden" id="id" name="id" value="{{ $pesanan->id }}">
                     <!-- Modal body -->
                     <div class="modal-body">
                         <input type="file" name="bukti_pembayaran" id="bukti_pembayaran">

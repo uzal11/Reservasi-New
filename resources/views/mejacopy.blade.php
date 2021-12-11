@@ -32,42 +32,40 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach ($tables as $table)
+                                    @foreach ($mejas as $meja)
 
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td><img src="{{ $table->region->photo }}" class="img-thumbnail"
-                                                    width="120px" alt="">
+                                            <td><img src="{{ $meja->sektor->photo }}" class="img-thumbnail" width="120px"
+                                                    alt="">
                                             </td>
-                                            <td>{{ $table->name }}</td>
+                                            <td>{{ $meja->nama }}</td>
 
                                             <td>
                                                 <form id="frm{{ $no }}"
-                                                    action="{{ url('ordermeja/' . $table->id) }}" method="post">
+                                                    action="{{ url('ordermeja/' . $meja->id) }}" method="post">
                                                     @csrf
-                                                    Kapasitas Umum : {{ $table->jumlah_kursi }}
+                                                    Kapasitas Umum : {{ $meja->jumlah_kursi }}
                                                     <br>
                                                     <br>
                                                     Tambahan Kursi :
                                                     <input type="number" name="tambah_kursi" id="tambah_kursi" value="0"
-                                                        min="0" max="{{ $table->max_kursi - $table->jumlah_kursi }}">
+                                                        min="0" max="{{ $meja->max_kursi - $meja->jumlah_kursi }}">
                                                 </form>
                                             </td>
                                             <td>
-                                                <button onclick="
-                                                                                        if (document.getElementById('tambah_kursi').value > {{ $table->max_kursi - $table->jumlah_kursi }}) 
-                                                                                        { 
-                                                                                            alert('jumlah tambah kursi melebihi kapasitas!!!'); 
-                                                                                        } 
-                                                                                        else if (document.getElementById('tambah_kursi').value < 0) 
-                                                                                        { 
-                                                                                            alert ('kapasitas tidak boleh dibawah nol'); 
-                                                                                        } 
-                                                                                        else {
-                                                                                            document.getElementById('frm{{ $no }}').submit();
-                                                                                        }
-                                                                                        
-                                                                        " class="btn btn-primary btn-sm">
+                                                <button onclick="if (document.getElementById('tambah_kursi').value > {{ $meja->max_kursi - $meja->jumlah_kursi }}) 
+                                                                { 
+                                                                    alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                } 
+                                                                    else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                { 
+                                                                    alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                } 
+                                                                    else {document.getElementById('frm{{ $no }}').submit();
+                                                                }
+                                                                                                        
+                                                                " class="btn btn-primary btn-sm">
                                                     Pilih
                                                 </button>
                                             </td>

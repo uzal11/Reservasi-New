@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         $menus = Menu::paginate(20);
-        return view('home',compact('menus'));
+        return view('home', compact('menus'));
     }
 }

@@ -7,7 +7,7 @@ use Request;
 use DB;
 use CRUDBooster;
 
-class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controllers\CBController
+class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers\CBController
 {
 
 	public function cbInit()
@@ -26,32 +26,57 @@ class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controller
 		$this->button_delete = true;
 		$this->button_detail = true;
 		$this->button_show = true;
+
 		$this->button_filter = true;
 		$this->button_import = false;
 		$this->button_export = false;
-		$this->table = "menu_orders";
+		$this->table = "pesanans";
+		// $this->addDateTime("Rencana Tiba", "rencana_tiba")->format("d/m/Y H:i:s");
 		# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 		# START COLUMNS DO NOT REMOVE THIS LINE
 		$this->col = [];
-		$this->col[] = ["label" => "Nama Pelanggan", "name" => "(SELECT users.name FROM menu_orders JOIN orders ON menu_orders.order_id = orders.id JOIN users ON orders.user_id = users.id LIMIT 1) as nama"];
-		$this->col[] = ["label" => "Kode Pesanan", "name" => "order_id", "join" => "orders,kode"];
-		$this->col[] = ["label" => "Nama Menu", "name" => "menu_id", "join" => "menus,name"];
-		$this->col[] = ["label" => "Jumlah", "name" => "id", "join" => "menu_orders,jumlah"];
-		$this->col[] = ["label" => "Status Pesanan", "name" => "order_id", "join" => "orders,status"];
-
+		$this->col[] = ["label" => "Nama Pelanggan", "name" => "user_id", "join" => "users,name"];
+		$this->col[] = ["label" => "Kode Pesanan", "name" => "kode"];
+		$this->col[] = ["label" => "Jenis Pesanan", "name" => "jenis"];
+		$this->col[] = ["label" => "Nomor Meja", "name" => "meja_id", "join" => "mejas,nama"];
+		$this->col[] = ["label" => "Sektor", "name" => "(SELECT sektors.nama FROM pesanans JOIN mejas ON pesanans.meja_id = mejas.id JOIN sektors ON sektors.id = mejas.sektor_id LIMIT 1) as sektor"];
+		$this->col[] = ["label" => "Tanggal Pesan/Reservasi", "name" => "created_at"];
+		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
+		$this->col[] = ["label" => "Tambahan Kursi", "name" => "tambahan_kursi"];
+		$this->col[] = ["label" => "Status", "name" => "status"];
+		$this->col[] = ["label" => "Bukti Pembayaran", "name" => "bukti_pembayaran", "image" => true];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = [];
-		$this->form[] = ['label' => 'Kode Pesanan', 'name' => 'order_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'orders,kode'];
-		$this->form[] = ['label' => 'Nama Menu', 'name' => 'menu_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'menus,name'];
+		$this->form[] = ['label' => 'Status Pesanan', 'name' => 'status', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => ['Menunggu Pembayaran', 'Diproses', 'Selesai']];
+		// $this->form[] = ['label' => 'Nama Pelanggan', 'name' => 'user_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'users,name'];
+		// $this->form[] = ['label' => 'Nomor Meja', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'tables,name'];
+		// $this->form[] = ['label' => 'Nama Kasir', 'name' => 'kasir_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
+		// $this->form[] = ['label' => 'Nama Pelayan', 'name' => 'pelayan_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
+		// $this->form[] = ['label' => 'Kapan Pesan', 'name' => 'kapan_pesan', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Kapa Bayar', 'name' => 'kapan_bayar', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Rencana Tiba', 'name' => 'rencana_tiba', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Kapan Tiba', 'name' => 'kapan_tiba', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Jenis', 'name' => 'jenis', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Kode', 'name' => 'kode', 'type' => 'hidden', 'width' => 'col-sm-10'];
+		// $this->form[] = ['label' => 'Kapan Pesanan Selesai', 'name' => 'kapan_pesanan_selesai', 'type' => 'datetime', 'validation' => 'required|date_format:Y-m-d H:i:s', 'width' => 'col-sm-10'];
 		# END FORM DO NOT REMOVE THIS LINE
 
 		# OLD START FORM
 		//$this->form = [];
-		//$this->form[] = ['label'=>'Kode Pesanan','name'=>'order_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'orders,kode'];
-		//$this->form[] = ['label'=>'Nama Menu','name'=>'menu_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'menus,name'];
+		//$this->form[] = ['label'=>'Nama Pelanggan','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,name'];
+		//$this->form[] = ['label'=>'Nomor Meja','name'=>'table_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tables,name'];
+		//$this->form[] = ['label'=>'Nama Kasir','name'=>'kasir_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+		//$this->form[] = ['label'=>'Nama Pelayan','name'=>'pelayan_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+		//$this->form[] = ['label'=>'Kapan Pesan','name'=>'kapan_pesan','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Kapa Bayar','name'=>'kapan_bayar','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Rencana Tiba','name'=>'rencana_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Kapan Tiba','name'=>'kapan_tiba','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Jenis','name'=>'jenis','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Kode','name'=>'kode','type'=>'hidden','width'=>'col-sm-10'];
+		//$this->form[] = ['label'=>'Kapan Pesanan Selesai','name'=>'kapan_pesanan_selesai','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
 		# OLD END FORM
 
 		/* 
@@ -81,6 +106,7 @@ class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controller
 	        | 
 	        */
 		$this->addaction = array();
+		$this->addaction[] = ['label' => 'Detail', 'url' => url('pesanan/[id]'), 'icon' => 'fa fa-check', 'color' => 'success'];
 
 
 		/* 
@@ -263,7 +289,13 @@ class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controller
 	public function hook_before_add(&$postdata)
 	{
 		//Your code here
-
+		if ($postdata['jenis'] == 'Reservasi') {
+			$postdata['kode'] = "RS";
+			echo 'hallo';
+		} else if ($postdata['jenis'] == 'Ditempat') {
+			$postdata['kode'] = "DI";
+		}
+		$postdata['kode'] = $postdata['kode'] . date("ymdHi") . $postdata['user_id'];
 	}
 
 	/* 
@@ -276,7 +308,10 @@ class AdminManMenuOrderController extends \crocodicstudio\crudbooster\controller
 	public function hook_after_add($id)
 	{
 		//Your code here
-
+		// $config['content'] = "Hellow World";
+		// $config['to'] = CRUDBooster::adminPath('man_pesanans');
+		// $config['id_cms_users'] = [1]; //The Id of the user that is going to receive notification. This could be an array of id users [1,2,3,4,5]
+		// CRUDBooster::sendNotification($config);
 	}
 
 	/* 

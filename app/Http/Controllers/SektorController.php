@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Region;
+
+use App\Models\Sektor;
 use Illuminate\Http\Request;
 
 class SektorController extends Controller
@@ -11,8 +12,9 @@ class SektorController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        $regions = Region::paginate(20);
+    public function index()
+    {
+        $regions = Sektor::paginate(20);
         return view('sektor', compact('regions'));
     }
 }

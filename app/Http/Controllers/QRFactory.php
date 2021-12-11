@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Meja;
+use App\Models\Pesanan;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\Sektor;
 use Carbon\Carbon;
 use App\Models\Table;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class QRFactory extends Controller
 {
@@ -30,8 +32,8 @@ class QRFactory extends Controller
     public static function scan($string)
     {
         $tanggal = Carbon::now();
-        $data_table = Table::where('hashcode', $string)->first();
-        $data_sector = Region::where('hashcode', $string)->get();
+        $data_table = Meja::where('hashcode', $string)->first();
+        $data_sector = Sektor::where('hashcode', $string)->get();
         //cek data_table ada berapa row
         //cek data_sector ada berapa row 
         if ($data_table) {
@@ -39,16 +41,19 @@ class QRFactory extends Controller
             $data_table->is_available = false;
             $data_table->update();
 
-            $order = new Order();
-            $order->user_id = Auth::user()->id;
-            $order->table_id = $data_table->id;
-            $order->kapan_pesan = $tanggal;
-            $order->table->is_available = 0;
-            $order->status = 'Menunggu Pembayaran';
-            $order->keranjang_status = 0;
-            $order->jenis = 'Dine In';
-            $order->kode = 'DI' . date("ymdHi");
-            $order->save();
+            $pesanan = new Pesanan();
+            $pesanan->user_id = Auth::user()->id;
+            $pesanan->meja_id = $data_table->id;
+            $pesanan->kapan_pesan = $tanggal;
+            $pesanan->rencana_tiba = $tanggal;
+            $pesanan->kapan_tiba = $tanggal;
+            $pesanan->meja->is_available = 0;
+            $pesanan->status = 'Menunggu Pembayaran';
+            $pesanan->keranjang_status = 0;
+            $pesanan->jenis = 'Dine In';
+            $pesanan->kode = 'DI' . date("mdHi");
+            $pesanan->save();
+
 
             return redirect('pesan');
         }

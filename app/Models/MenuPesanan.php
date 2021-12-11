@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenuOrder extends Model
+class MenuPesanan extends Model
 {
     public function menu()
     {
         return $this->belongsTo(\App\Models\Menu::class, 'menu_id');
     }
 
-    public function product()
+    public function pesanan()
     {
-        return $this->belongsTo(\App\Models\Order::class, 'order_id');
+        return $this->belongsTo(\App\Models\Pesanan::class, 'pesanan_id');
     }
 }
