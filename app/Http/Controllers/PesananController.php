@@ -26,7 +26,6 @@ class PesananController extends Controller
 
     public function pesanan(Request $request, $id)
     {
-
         // dd($request->all());
         $menu = Menu::where('id', $id)->first();
         $tanggal = Carbon::now();
@@ -92,13 +91,13 @@ class PesananController extends Controller
 
     public function check_out()
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
-        if (!empty($pesanan)) {
-            $menu_pesanans = MenuPesanan::where('pesanan_id', $pesanan->id)->get();
-        }
-        $mejas = Meja::where('id', $pesanan->meja_id)->where('is_available', '')->get();
-
-        return view('pesanan.check_out', compact('pesanan', 'menu_pesanans', 'mejas'));
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)
+            ->with('meja')
+            ->with('menu')
+            ->with('menu.menu')
+            ->where('keranjang_status', 0)->first();
+        // return $pesanan;
+        return view('pesanan.check_out', compact('pesanan'));
     }
 
     public function destroy(Request $request)
@@ -119,9 +118,11 @@ class PesananController extends Controller
     {
         $tanggal = Carbon::now();
 
-        $cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+        // return $request->all();
+
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
         //simpan ke database pesanans
-        if (empty($cek_pesanan)) {
+        if (empty($pesanan)) {
             $pesanan = new Pesanan();
             $pesanan->user_id = Auth::user()->id;
             $pesanan->kapan_pesan = $tanggal;
@@ -134,11 +135,8 @@ class PesananController extends Controller
             $pesanan->save();
         }
 
-        $mejas = Meja::where('id', $id)->first();
-
         $pesanan->tambahan_kursi = $request->tambah_kursi;
-        $pesanan->meja_id = $mejas->id;
-        //dd($pesanan);
+        $pesanan->meja_id = $id;
         $pesanan->update();
 
         return redirect('check-out')->with('success', 'Berhasil Pilih Meja');
@@ -146,12 +144,14 @@ class PesananController extends Controller
 
     public function konfirmasi(Request $request)
     {
-        // dd($request->all());
-        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('keranjang_status', 0)->first();
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->with('menu')->with('menu.menu')->where('keranjang_status', 0)->first();
+        if (sizeof($pesanan->menu) < 1) {
+            return redirect()->back()->with('warning', 'Belum ada menu yg dipilih untuk Check Out');
+        }
+
         $pesanan_id = $pesanan->id;
         $pesanan->keranjang_status = 1;
         $pesanan->rencana_tiba = $request->tgl . ' ' . $request->jam . ':' . $request->min;
-
         $pesanan->update();
 
         return redirect('history/' . $pesanan_id)->with('success', 'Berhasil Check Out');

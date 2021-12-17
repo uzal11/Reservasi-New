@@ -27,18 +27,14 @@ class PesananAdminController extends Controller
 
     public function detail()
     {
-        $pesanans = Pesanan::whereDate('rencana_tiba', date('Y-m-d'))->orderBy('rencana_tiba', 'ASC')->get();
-        foreach ($pesanans as $key => $value) {
-            $menupesanan = MenuPesanan::where('pesanan_id', $value->id)->get();
-            foreach ($menupesanan as $key => $menu) {
-
-                $pesanans[$key]["menus"] = Menu::whereId($menu->menu_id)->first();
-            }
-            $pesanans[$key]["meja"] = Meja::where('id', $value->meja_id)->first();
-        }
-
-
-        //return $pesanans;
+        $pesanans = Pesanan::
+        with('menu')
+        ->with('menu.menu')
+        ->with('meja')
+        ->whereDate('rencana_tiba', date('Y-m-d'))
+        ->orWhereDate('created_at', date('Y-m-d'))
+        ->orderBy('rencana_tiba', 'ASC')
+        ->get();
 
         return view('live_pesanan', compact('pesanans'));
     }

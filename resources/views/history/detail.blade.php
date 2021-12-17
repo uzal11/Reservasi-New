@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('history') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ url('home') }}" class="btn btn-primary">Kembali</a>
 
             </div>
             <div class="col-md-12 mt-2">

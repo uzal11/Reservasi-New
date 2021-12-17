@@ -12,58 +12,67 @@
                                     <td>No</td>
                                     <td>Transaksi</td>
                                     <td>Nama Menu</td>
-                                    <td>Harga</td>
-                                    <td>Jumlah</td>
-                                    <td>Total Harga</td>
+                                    <td>Action</td>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach ($pesanans as $pesanan)
-                                    @foreach ($pesanan->menu as $pesananmenu)
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
-                                            <td>
-                                                <div class="card" style="width: 100%;">
-                                                    <img class="card-img-top" src="{{ $pesanan->meja->sektor->photo }}"
-                                                        alt="Card image cap"
-                                                        style="float: left; width:120px; margin-right:5px; ">
-                                                    <div class="card-body" style="float: left">
-                                                        <h5 class="card-title">Pesanan Meja
-                                                            <b>{{ $pesanan->meja->nama }}
-                                                                ({{ $pesanan->meja->sektor->nama }})</b>
-                                                        </h5>
-                                                        <p class="card-text">
-                                                            Kode Pesananan : <b>{{ $pesanan->kode }}</b>
-                                                            <br>
-                                                            Waktu Penyiapan :
-                                                            <b>{{ date('d M Y H:i', strtotime($pesanan->kapan_tiba)) }}</b>
-                                                            <br>
-                                                            Status :
-                                                            @if ($pesanan->keranjang_status == 1)
-                                                                <b>{{ $pesanan->status }}</b>
-                                                            @else
-                                                                <b>Sudah Dibayar</b>
-                                                            @endif
-                                                            <br>
-                                                            Total : Rp.
-                                                            {{ number_format($pesanan->total_harga, 0, ',', '.') }}
-                                                            <br>
-                                                        <form action="{{ url('update_status') }}/{{ $pesanan->id }}"
-                                                            method="post">
-                                                            @csrf
-                                                            <button type="submit">Selesai</button>
-                                                        </form>
-                                                        </p>
-                                                    </div>
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>
+                                            <div class="card" style="width: 100%;">
+                                                <img class="card-img-top" src="{{ $pesanan->meja->sektor->photo }}"
+                                                    alt="Card image cap"
+                                                    style="float: left; width:120px; margin-right:5px; ">
+                                                <div class="card-body" style="float: left">
+                                                    <h5 class="card-title">Pesanan Meja
+                                                        <b>{{ $pesanan->meja->nama }}
+                                                            ({{ $pesanan->meja->sektor->nama }})</b>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        Nama Pelanggan : <b>{{ $pesanan->user->name }}</b>
+                                                        <br>
+                                                        Kode Pesanan : <b>{{ $pesanan->kode }}</b>
+                                                        <br>
+                                                        Waktu Penyiapan :
+                                                        <b>{{ date('d M Y H:i', strtotime($pesanan->kapan_tiba)) }}</b>
+                                                        <br>
+                                                        Status :
+                                                        @if ($pesanan->keranjang_status == 1)
+                                                            <b>{{ $pesanan->status }}</b>
+                                                        @else
+                                                            <b>Sudah Dibayar</b>
+                                                        @endif
+                                                        <br>
+                                                        Total : Rp.
+                                                        {{ number_format($pesanan->total_harga, 0, ',', '.') }}
+                                                        <br>
+                                                    <form action="{{ url('update_status') }}/{{ $pesanan->id }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <button type="submit">Selesai</button>
+                                                    </form>
+                                                    </p>
                                                 </div>
-                                            </td>
-                                            <td>{{ $pesananmenu->menu->nama }}</td>
-                                            <td>{{ $pesananmenu->menu->harga }} </td>
-                                            <td>{{ $pesananmenu->jumlah }}</td>
-                                            <td>{{ $pesananmenu->total_harga }}</td>
-                                        </tr>
-                                    @endforeach
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @foreach ($pesanan->menu as $pesananmenu)
+                                                <span class="label label rage label-info" style="margin: 5px;">
+                                                    {{ $pesananmenu->jumlah }} {{ $pesananmenu->menu->nama }} -
+                                                    {{ $pesananmenu->total_harga }}
+                                                </span>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('pesanan/' . $pesanan->id) }}">
+                                                <span class="label label-info"> Detail </span>
+                                            </a>
+                                        </td>
+
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -26,6 +26,6 @@ class PesanController extends Controller
     public function index()
     {
         $menus = Menu::paginate(20);
-        return view('pesan', compact('menus'));
+        return view('pesanmodal', compact('menus'));
     }
 }
