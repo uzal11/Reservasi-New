@@ -33,14 +33,45 @@ class QRFactory extends Controller
     {
         $tanggal = Carbon::now();
         $data_table = Meja::where('hashcode', $string)->first();
-        $data_sector = Sektor::where('hashcode', $string)->get();
         //cek data_table ada berapa row
         //cek data_sector ada berapa row 
-        if ($data_table) {
-            //return value --> id dan nama meja
-            $data_table->is_available = false;
-            $data_table->update();
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)
+            // ->with('meja')
+            // ->with('menu')
+            // ->with('menu.menu')
+            ->where('keranjang_status', 0)
+            ->where('status_pesanan', '!=', 'Selesai')
+            ->orderBy('created_at', "DESC")
+            // ->count()
+            ->first();
 
+
+        if ($pesanan) {
+            if ($pesanan->meja_id == $data_table->id) {
+                if ($pesanan->jenis != 'Dine In') {
+                    $pesanan->meja_id = $data_table->id;
+                    $pesanan->kapan_pesan = $tanggal;
+                    $pesanan->rencana_tiba = $tanggal;
+                    $pesanan->kapan_tiba = $tanggal;
+                    $pesanan->status_pembayaran = 'Belum Bayar';
+                    $pesanan->status_pesanan = 'Menunggu Pembayaran';
+                    $pesanan->keranjang_status = 0;
+                    $pesanan->jenis = 'Dine In';
+                    $pesanan->kode = 'DI' . date("mdHi");
+                    $pesanan->update();
+                }
+            } else {
+                $curentTable = Meja::where('id', $pesanan->meja_id)->first();
+                $curentTable->is_available = true;
+                $curentTable->update();
+
+                $data_table->is_available = false;
+                $data_table->update();
+
+                $pesanan->meja_id = $data_table->id;
+                $pesanan->update();
+            }
+        } else {
             $pesanan = new Pesanan();
             $pesanan->user_id = Auth::user()->id;
             $pesanan->meja_id = $data_table->id;
@@ -48,30 +79,46 @@ class QRFactory extends Controller
             $pesanan->rencana_tiba = $tanggal;
             $pesanan->kapan_tiba = $tanggal;
             $pesanan->meja->is_available = 0;
-            $pesanan->status = 'Menunggu Pembayaran';
+            $pesanan->status_pembayaran = 'Belum Bayar';
+            $pesanan->status_pesanan = 'Menunggu Pembayaran';
             $pesanan->keranjang_status = 0;
             $pesanan->jenis = 'Dine In';
             $pesanan->kode = 'DI' . date("mdHi");
             $pesanan->save();
-
-
-            return redirect('pesan');
         }
-        // else if (count($data_sector)>0)
-        // {
-        //     //return value --> id dan nama region
-
-        // }
-        // else 
-        // {
-        //     return "INVALID";
-        // }
-
+        return redirect("pesan")->with('success', 'Meja Berhasil Dipilih, Silahkan Pilih Menu!');
     }
 
     private static function _enkrispi($p1, $p2)
     {
         $string = $p1 . "-" . $p2;
         return hash("sha1", $string);
+    }
+
+    public function scanPindahMeja($id)
+    {
+        return view('scanqrcodepindah')->with("id", $id);
+    }
+
+    public function updatePindahMeja($id, $meja)
+    {
+        $data_table = Meja::where('hashcode', $meja)->first();
+        $pesanan = Pesanan::whereId($id)->first();
+
+        if ($pesanan) {
+            $curentTable = Meja::where('id', $pesanan->meja_id)->first();
+            $curentTable->is_available = true;
+            $curentTable->update();
+
+            $data_table->is_available = false;
+            $data_table->update();
+
+            $pesanan->meja_id = $data_table->id;
+            $pesanan->update();
+
+            return redirect("history_diproses")->with('success', 'Data Meja telah diperbarui!!');
+        } else {
+            return redirect("pesan")->with('warning', 'Order Tidak Ada!!');
+        }
     }
 }

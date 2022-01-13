@@ -42,7 +42,7 @@ class AdminManReservasiController extends \crocodicstudio\crudbooster\controller
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
 		$this->col[] = ["label" => "Status Check In", "name" => "check_in"];
 		$this->col[] = ["label" => "Kapan Tiba", "name" => "kapan_tiba"];
-		$this->col[] = ["label" => "Status Pemesanan", "name" => "status"];
+		$this->col[] = ["label" => "Status Pemesanan", "name" => "status_pesanan"];
 		$this->col[] = ["label" => "Bukti Pembayaran", "name" => "bukti_pembayaran", "image" => true];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
@@ -285,7 +285,7 @@ class AdminManReservasiController extends \crocodicstudio\crudbooster\controller
 		//Your code here
 		$query->where('pesanans.jenis', "Reservasi")
 			// ->where("pesanans.created_at", $tgl)
-			->whereDate('pesanans.created_at', '=', date('Y-m-d'));
+			->whereDate('pesanans.rencana_tiba', '=', date('Y-m-d'));
 	}
 
 	/*

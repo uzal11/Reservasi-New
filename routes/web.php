@@ -25,6 +25,12 @@ Route::view('/offline', 'vendor.laravelpwa.offline');
 
 Route::get('/scan', 'ScanController@index');
 Route::get('/scan/{id}', 'QRFactory@scan');
+
+Route::get('/scan-pindah-meja/{id}', 'QRFactory@scanPindahMeja');
+Route::get('/scan-pindah-meja/{id}/{meja}', 'QRFactory@updatePindahMeja');
+
+
+
 Auth::routes();
 Route::get('/sektor', 'SektorController@index');
 Route::get('/meja', 'MejaController@index');
@@ -50,11 +56,15 @@ Route::get('qrcode/{id}/{type}', [QRFactory::class, 'generateQR'])->name('genera
 Route::get('history_selesai', 'HistoryController@index');
 Route::get('history/{id}', 'HistoryController@detail');
 
-Route::get('pesanan/{id}', 'PesananAdminController@pesanan');
-Route::get('live_pesanan', 'PesananAdminController@detail');
+Route::get('pesanan/{id}', 'PesananAdminController@detail');
+Route::get('live_pesanan', 'PesananAdminController@pesanan');
 Route::get('history_diproses', 'HistoryController@diproses');
 Route::get('seluruh_riwayat', 'HistoryController@seluruhriwayat');
 Route::post('update_status/{id}', 'PesananAdminController@updatestatus');
+Route::get('adminmenupesanan', 'PesananAdminController@adminmenupesanan');
+Route::get('adminpesanan', 'PesananAdminController@adminpesanan');
+Route::get('tesdatatable', 'PesananAdminController@tesdatatable');
+
 /*Nanti dilindungi dengan admin*/
 
 

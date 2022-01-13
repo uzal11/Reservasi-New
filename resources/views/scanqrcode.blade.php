@@ -41,7 +41,7 @@
     scanner.addListener('scan', function(content) {
         //alert(content);
         //$("#qrcode").val(content);
-        window.location = '/scan/' + content;
+        window.location = 'scan/' + content;
     });
 
     Instascan.Camera.getCameras().then(function(cameras) {

@@ -4,21 +4,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('seluruh_riwayat') }}"><button style="margin-right: 5px">Seluruh Riwayat</button></a>
-                <a href="{{ url('history_selesai') }}"><button style="margin-right: 5px">Pesanan Selesai</button></a>
-                <a href="{{ url('history_diproses') }}"><button style="margin-right: 5px">Dalam Proses</button></a>
+                <a href="{{ url('seluruh_riwayat') }}"><button class="btn btn-primary"
+                        style="margin-right: 5px; margin-bottom: 5px">Seluruh
+                        Riwayat</button></a>
+                <a href="{{ url('history_selesai') }}"><button class="btn btn-primary"
+                        style="margin-right: 5px; margin-bottom: 5px">Pesanan
+                        Selesai</button></a>
+                <a href="{{ url('history_diproses') }}"><button class="btn btn-primary"
+                        style="margin-right: 5px; margin-bottom: 5px">Dalam
+                        Proses</button></a>
             </div>
             <div class="col-md-12 mt-3">
                 <div class="card">
                     <div class="card-header">
                         <h3><i class="fa fa-history"></i>Pesanan Selesai</h3>
-                        <table class="table table-striped">
+                        <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="width: 100%">
                             <thead>
                                 <tr>
                                     <td>No</td>
-                                    <td>Tanggal</td>
+                                    <td>Tanggal Pesan</td>
+                                    <td>Tanggal Reservasi</td>
                                     <td>Kode Pesanan</td>
-                                    <td>Status</td>
+                                    <td>Status Pesanan</td>
                                     <td>Jumlah Harga</td>
                                     <td>Aksi</td>
                                 </tr>
@@ -29,10 +37,11 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ date('d M Y H:i', strtotime($pesanan->created_at)) }}</td>
+                                        <td>{{ date('d M Y H:i', strtotime($pesanan->rencana_tiba)) }}</td>
                                         <td>{{ $pesanan->kode }}</td>
                                         <td>
                                             @if ($pesanan->keranjang_status == 1)
-                                                {{ $pesanan->status }}
+                                                {{ $pesanan->status_pesanan }}
                                             @else
                                                 Sudah Dibayar
                                             @endif
@@ -54,4 +63,9 @@
         </div>
     </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("table").DataTable();
+        });
+    </script>
 @endsection

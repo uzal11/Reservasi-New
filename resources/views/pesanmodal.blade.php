@@ -46,6 +46,7 @@
                                                 <td>Deskripsi</td>
                                                 <td>:</td>
                                                 <td>{{ $menu->deskripsi }}</td>
+
                                             </tr>
 
                                             <tr>
@@ -58,6 +59,8 @@
                                                             class="form-control" required>
                                                         <input type="hidden" name="menu_id" value="{{ $menu->id }}"
                                                             class="form-control" required>
+                                                        <input style="margin-top: 5px" type="text" name="catatan"
+                                                            placeholder="Catatan" class="form-control">
 
                                                         <button type="submit" class="btn btn-success mt-3">Pesan</button>
                                                 </td>
@@ -71,7 +74,7 @@
                             <!-- Modal footer -->
                             <div class="modal-footer">
                                 {{-- <button type="submit" class="btn btn-primary">Pesan</button> --}}
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                             </div>
                             </form>
                         </div>

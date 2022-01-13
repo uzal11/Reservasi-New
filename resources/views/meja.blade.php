@@ -20,7 +20,8 @@
                     <div class="card-header">
                         <h3><i class="fa fa-table"></i>Pilih Meja</h3>
                         <div class="body">
-                            <table class="table table-striped">
+                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                                style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -33,14 +34,14 @@
                                 <tbody>
                                     <?php $no = 1; ?>
                                     @foreach ($mejas as $meja)
-
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td><img src="{{ $meja->sektor->photo }}" class="img-thumbnail" width="120px"
+                                            <td>
+                                                <h6>{{ $meja->sektor->nama }}</h6>
+                                                <img src="{{ $meja->sektor->photo }}" class="img-thumbnail" width="120px"
                                                     alt="">
                                             </td>
                                             <td>{{ $meja->nama }}</td>
-
                                             <td>
                                                 <form id="frm{{ $no }}"
                                                     action="{{ url('ordermeja/' . $meja->id) }}" method="post">
@@ -54,18 +55,20 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                <button onclick="if (document.getElementById('tambah_kursi').value > {{ $meja->max_kursi - $meja->jumlah_kursi }}) 
-                                                            { 
-                                                                alert('jumlah tambah kursi melebihi kapasitas!!!'); 
-                                                            } 
-                                                                else if (document.getElementById('tambah_kursi').value < 0) 
-                                                            { 
-                                                                alert ('kapasitas tidak boleh dibawah nol'); 
-                                                            } 
-                                                                else {document.getElementById('frm{{ $no }}').submit();
-                                                            }
-                                                                                                    
-                                                            " class="btn btn-primary btn-sm">
+                                                <button
+                                                    onclick="if (document.getElementById('tambah_kursi').value > {{ $meja->max_kursi - $meja->jumlah_kursi }}) 
+                                                                                                                                { 
+                                                                                                                                    alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                                                                                } 
+                                                                                                                                    else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                                                                                { 
+                                                                                                                                    alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                                                                                } 
+                                                                                                                                    else {document.getElementById('frm{{ $no }}').submit();
+                                                                                                                                }
+                                                                                                                                                                        
+                                                                                                                                "
+                                                    class="btn btn-primary btn-sm">
                                                     Pilih
                                                 </button>
                                             </td>
@@ -75,9 +78,16 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("table").dataTable({
+                "paging": false,
+                "searching": false
+            });
+        });
+    </script>
 @endsection

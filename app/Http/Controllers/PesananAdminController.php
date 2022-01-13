@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class PesananAdminController extends Controller
 {
     //
-    public function pesanan($id)
+    public function detail($id)
     {
         $pesanan = Pesanan::where('id', $id)->first();
         $menu_pesanans = MenuPesanan::where('pesanan_id', $pesanan->id)->get();
@@ -25,16 +25,15 @@ class PesananAdminController extends Controller
         return view('detail_pesanan', compact('pesanan', 'menu_pesanans', 'mejas'));
     }
 
-    public function detail()
+    public function pesanan()
     {
-        $pesanans = Pesanan::
-        with('menu')
-        ->with('menu.menu')
-        ->with('meja')
-        ->whereDate('rencana_tiba', date('Y-m-d'))
-        ->orWhereDate('created_at', date('Y-m-d'))
-        ->orderBy('rencana_tiba', 'ASC')
-        ->get();
+        $pesanans = Pesanan::with('menu')
+            ->with('menu.menu')
+            ->with('meja')
+            ->where('status_pesanan', '=', 'Diproses')
+            ->whereDate('rencana_tiba', '=', date('Y-m-d'))
+            ->orderBy('rencana_tiba', 'ASC')
+            ->get();
 
         return view('live_pesanan', compact('pesanans'));
     }
@@ -42,9 +41,28 @@ class PesananAdminController extends Controller
     public function updatestatus($id)
     {
         $pesanan = Pesanan::where('id', $id)->first();
-        $pesanan->status = 'Selesai';
+        $pesanan->status_pesanan = 'Selesai';
         $pesanan->update();
 
         return redirect('live_pesanan')->with('success', 'Pesanan Selesai');
+    }
+
+
+    public function adminpesanan()
+    {
+        $pesanans = Pesanan::with('menu')
+            ->with('menu.menu')
+            ->with('meja')
+            ->orderBy('rencana_tiba', 'ASC')
+            ->get();
+
+        return view('adminpesanan', compact('pesanans'));
+    }
+
+    public function adminmenupesanan()
+    {
+        $menu_pesanans = MenuPesanan::with('menu')->get();
+
+        return view('adminmenupesanan', compact('menu_pesanans'));
     }
 }

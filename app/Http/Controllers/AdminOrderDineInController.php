@@ -39,7 +39,7 @@ class AdminOrderDineInController extends \crocodicstudio\crudbooster\controllers
 		$this->col[] = ["label" => "Kode", "name" => "kode"];
 		$this->col[] = ["label" => "Jenis", "name" => "jenis"];
 		$this->col[] = ["label" => "Total Harga", "name" => "total_harga"];
-		$this->col[] = ["label" => "Status Pemesanan", "name" => "status"];
+		$this->col[] = ["label" => "Status Pemesanan", "name" => "status_pesanan"];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE

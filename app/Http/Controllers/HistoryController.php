@@ -19,7 +19,7 @@ class HistoryController extends Controller
 
     public function index()
     {
-        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '=', 'Selesai')->orderBy('created_at', 'DESC')->get();
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status_pesanan', '=', 'Selesai')->orderBy('created_at', 'DESC')->get();
         return view('history.historyselesai', compact('pesanans'));
     }
 
@@ -36,7 +36,7 @@ class HistoryController extends Controller
 
     public function diproses()
     {
-        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '=', 'Diproses')->orderBy('created_at', 'DESC')->get();
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status_pesanan', '=', 'Diproses')->orderBy('created_at', 'DESC')->get();
         return view('history.diproses', compact('pesanans'));
     }
 

@@ -6,6 +6,8 @@ use Session;
 use Request;
 use DB;
 use CRUDBooster;
+use App\Models\Pesanan;
+
 
 class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers\CBController
 {
@@ -40,17 +42,18 @@ class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers
 		$this->col[] = ["label" => "Kode Pesanan", "name" => "kode"];
 		$this->col[] = ["label" => "Jenis Pesanan", "name" => "jenis"];
 		$this->col[] = ["label" => "Nomor Meja", "name" => "meja_id", "join" => "mejas,nama"];
-		$this->col[] = ["label" => "Sektor", "name" => "(SELECT sektors.nama FROM pesanans JOIN mejas ON pesanans.meja_id = mejas.id JOIN sektors ON sektors.id = mejas.sektor_id LIMIT 1) as sektor"];
+		// $this->col[] = ["label" => "Sektor", "name" => "sektors.nama", "join" => "mejas,sektor_id", "join" => "sektors,id"];
+		// $this->col[] = ["label" => "Sektor", "name" => "(SELECT sektors.nama FROM pesanans JOIN mejas ON pesanans.meja_id = mejas.id JOIN sektors ON sektors.id = mejas.sektor_id LIMIT 1) as sektor"];
 		$this->col[] = ["label" => "Tanggal Pesan/Reservasi", "name" => "created_at"];
 		$this->col[] = ["label" => "Rencana Tiba", "name" => "rencana_tiba"];
 		$this->col[] = ["label" => "Tambahan Kursi", "name" => "tambahan_kursi"];
-		$this->col[] = ["label" => "Status", "name" => "status"];
+		$this->col[] = ["label" => "Status", "name" => "status_pesanan"];
 		$this->col[] = ["label" => "Bukti Pembayaran", "name" => "bukti_pembayaran", "image" => true];
 		# END COLUMNS DO NOT REMOVE THIS LINE
 
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = [];
-		$this->form[] = ['label' => 'Status Pesanan', 'name' => 'status', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => ['Menunggu Pembayaran', 'Diproses', 'Selesai']];
+		$this->form[] = ['label' => 'Status Pembayaran', 'name' => 'status_pembayaran', 'type' => 'select2', 'validation' => 'required|min:1|max:255', 'width' => 'col-sm-10', 'dataenum' => ['Belum Bayar', 'Bukti Pembayaran Tidak Valid', 'Sudah Bayar']];
 		// $this->form[] = ['label' => 'Nama Pelanggan', 'name' => 'user_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'users,name'];
 		// $this->form[] = ['label' => 'Nomor Meja', 'name' => 'table_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'tables,name'];
 		// $this->form[] = ['label' => 'Nama Kasir', 'name' => 'kasir_id', 'type' => 'select2', 'validation' => 'required|integer|min:0', 'width' => 'col-sm-10', 'datatable' => 'cms_users,name'];
@@ -289,13 +292,13 @@ class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers
 	public function hook_before_add(&$postdata)
 	{
 		//Your code here
-		if ($postdata['jenis'] == 'Reservasi') {
-			$postdata['kode'] = "RS";
-			echo 'hallo';
-		} else if ($postdata['jenis'] == 'Ditempat') {
-			$postdata['kode'] = "DI";
-		}
-		$postdata['kode'] = $postdata['kode'] . date("ymdHi") . $postdata['user_id'];
+		// if ($postdata['jenis'] == 'Reservasi') {
+		// 	$postdata['kode'] = "RS";
+		// 	echo 'hallo';
+		// } else if ($postdata['jenis'] == 'Ditempat') {
+		// 	$postdata['kode'] = "DI";
+		// }
+		// $postdata['kode'] = $postdata['kode'] . date("ymdHi") . $postdata['user_id'];
 	}
 
 	/* 
@@ -325,7 +328,13 @@ class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers
 	public function hook_before_edit(&$postdata, $id)
 	{
 		//Your code here
-
+		$pesanan = Pesanan::whereId($id)->first();
+		if ($pesanan->status_pembayaran == 'Sudah Bayar') {
+			$pesanan->status_pesanan = 'Diproses';
+		} else {
+			$pesanan->status_pesanan = 'Menunggu Pembayaran';
+		}
+		$pesanan->update();
 	}
 
 	/* 
@@ -337,8 +346,14 @@ class AdminManPesanansController extends \crocodicstudio\crudbooster\controllers
 	    */
 	public function hook_after_edit($id)
 	{
-		//Your code here 
-
+		//Your code here
+		$pesanan = Pesanan::whereId($id)->first();
+		if ($pesanan->status_pembayaran == 'Sudah Bayar') {
+			$pesanan->status_pesanan = 'Diproses';
+		} else {
+			$pesanan->status_pesanan = 'Menunggu Pembayaran';
+		}
+		$pesanan->update();
 	}
 
 	/* 

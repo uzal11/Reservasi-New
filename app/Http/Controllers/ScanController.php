@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 
 class ScanController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('scanqrcode');
+    }
+
+
+    public function scanPindahMeja()
+    {
+        return view('scanqrcodepindah');
     }
 }

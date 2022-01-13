@@ -38,7 +38,7 @@ class AdminManMenuPesananController extends \crocodicstudio\crudbooster\controll
 		$this->col[] = ["label" => "Kode Pesanan", "name" => "pesanan_id", "join" => "pesanans,kode"];
 		$this->col[] = ["label" => "Nama Menu", "name" => "menu_id", "join" => "menus,nama"];
 		$this->col[] = ["label" => "Jumlah", "name" => "id", "join" => "menu_pesanans,jumlah"];
-		$this->col[] = ["label" => "Status Pesanan", "name" => "pesanan_id", "join" => "pesanans,status"];
+		$this->col[] = ["label" => "Status Pesanan", "name" => "pesanan_id", "join" => "pesanans,status_pesanan"];
 
 		# END COLUMNS DO NOT REMOVE THIS LINE
 

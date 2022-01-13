@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('home') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ url('seluruh_riwayat') }}" class="btn btn-primary">Kembali</a>
 
             </div>
             <div class="col-md-12 mt-2">
@@ -18,24 +18,24 @@
                 </nav>
             </div>
             <div class="col-md-12">
-                <div class="card body">
-                    <h3>Sukses Check Out <button style="float: right; margin:5px 5px 0px 0px;" class="btn btn-primary"
-                            data-toggle="modal" data-target="#myModal">Upload
-                            Bukti Pembayaran</button></h3>
-                    <label>Kode Pesanan: {{ $pesanan->kode }}</label>
-                    <h5>Pesanan anda berhasil check out selanjutnya silahkan transfer dan upload bukti pembayaran</h5>
+                <div class="card mt-2">
+                    <div class="card-header">
 
+                        <h3>Berhasil Pesan</h3>
+                        <label>Kode Pesanan: {{ $pesanan->kode }}</label>
+                    </div>
                 </div>
                 <div class="card mt-2">
                     <div class="card-header">
                         <h3><i class="fa fa-shopping-cart"></i>Detail Pemesanan</h3>
                         @if (!empty($pesanan))
                             <div class="body">
-                                <table class="table table-striped">
+                                <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                                    style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Barang</th>
+                                            <th>Nama Menu</th>
                                             <th>Jumlah</th>
                                             <th>Harga</th>
                                             <th>Total Harga</th>
@@ -52,25 +52,40 @@
                                                 <td>Rp. {{ number_format($menu_pesanan->total_harga) }}</td>
                                             </tr>
                                         @endforeach
-                                        <tr>
-                                            <td colspan="4" align="right"><strong>Sub Total :</strong> </td>
-                                            <td> <strong>Rp. {{ number_format($pesanan->total_harga) }}</strong> </td>
-                                        </tr>
                                         @if (empty($pesanan->rencana_tiba))
                                             <tr>
                                                 <td><a href="{{ url('/table') }}" class="btn btn-primary">Pilih Meja dan
                                                         Sektor</a></td>
                                             </tr>
                                         @endif
+                                    </tbody>
+                                    {{-- <tfoot>
+                                        <tr>
+                                            <td colspan="4" align="right"><strong>Sub Total :</strong> </td>
+                                            <td> <strong>Rp. {{ number_format($pesanan->total_harga) }}</strong> </td>
+                                        </tr>
+                                    </tfoot> --}}
+                                </table>
+                                <h4>Sub Total : <strong>Rp.
+                                        {{ number_format($pesanan->total_harga) }}</strong></h4>
+                            </div>
+
+                            <div class="body">
+                                <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                                    style="width: 100%">
+                                    <thead>
                                         <tr>
                                             <th>Nomor Meja</th>
                                             <th>Kapasitas</th>
                                             <th>Sektor</th>
                                             <th>Foto</th>
-                                            <th>Bukti Pembayaran</th>
+                                            <th>Status dan Bukti Pembayaran</th>
                                             <th>Waktu Reservasi</th>
                                         </tr>
-                                        {{-- @foreach ($tables as $table) --}}
+
+                                    </thead>
+                                    <tbody>
+
                                         <tr>
                                             <td>{{ $pesanan->meja->nama }}</td>
                                             <td>{{ $pesanan->meja->jumlah_kursi }}</td>
@@ -78,46 +93,32 @@
                                             <td><img src="{{ asset($pesanan->meja->sektor->photo) }}" width="120px"
                                                     alt="">
                                             </td>
-                                            <td><img src="{{ asset($pesanan->bukti_pembayaran) }}" width="120px" alt="">
+                                            <td>
+                                                <p>{{ $pesanan->status_pembayaran }}</p>
+                                                <img src="{{ asset($pesanan->bukti_pembayaran) }}" width="120px" alt="">
                                             </td>
                                             <td>{{ date('d M Y H:i', strToTime($pesanan->rencana_tiba)) }}</td>
                                         </tr>
-                                        {{-- @endforeach --}}
                                     </tbody>
                                 </table>
+                            </div>
                         @endif
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
-    </div>
+    <script>
+        $(document).ready(function() {
+            $("table").dataTable({
+                "paging": false,
+                "searching": false,
+                "language": {
+                    "emptyTable": "Belum Ada Data Yang Dipilih"
+                }
+            });
 
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Uploud Bukti Pembayaran</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <form action="{{ url('bukti-pembayaran') }}" method="POST" enctype='multipart/form-data'>
-                    @csrf
-                    <input type="hidden" id="id" name="id" value="{{ $pesanan->id }}">
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <input type="file" name="bukti_pembayaran" id="bukti_pembayaran">
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+        });
+    </script>
 @endsection

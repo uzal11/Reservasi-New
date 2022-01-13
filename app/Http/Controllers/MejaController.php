@@ -11,7 +11,7 @@ class MejaController extends Controller
     public function index()
     {
         $mejas = Meja::paginate(20);
-        return view('mejacopy', compact('mejas'));
+        return view('meja', compact('mejas'));
     }
 
     public function set_status_meja($id)
