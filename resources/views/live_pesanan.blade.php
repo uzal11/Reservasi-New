@@ -115,16 +115,5 @@
                             });
                         }
                     });
-                    // pesanan by the grouping
-                    //     $('#example tbody').on('click', 'tr.group', function() {
-                    //         var currentpesanan = table.pesanan()[0];
-                    //         if (currentpesanan[0] === groupColumn && currentpesanan[1] === 'asc') {
-                    //             table.pesanan([groupColumn, 'desc']).draw();
-                    //         } else {
-                    //             table.pesanan([groupColumn, 'asc']).draw();
-                    //         }
-                    //     });
-                    // });
     </script>
-
 @endsection

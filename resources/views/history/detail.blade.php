@@ -43,7 +43,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
+                                        <?php $no = 1; ?>
+                                <?php $total_harga = 0; ?>
                                         @foreach ($menu_pesanans as $menu_pesanan)
+                                        <?php $total_harga += $menu_pesanan->total_harga; ?>
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $menu_pesanan->menu->nama }}</td>
@@ -67,7 +70,7 @@
                                     </tfoot> --}}
                                 </table>
                                 <h4>Sub Total : <strong>Rp.
-                                        {{ number_format($pesanan->total_harga) }}</strong></h4>
+                                        {{ number_format($total_harga) }}</strong></h4>
                             </div>
 
                             <div class="body">
