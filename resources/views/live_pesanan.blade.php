@@ -1,5 +1,6 @@
 @extends('crudbooster::admin_template')
 @section('content')
+    <meta http-equiv="refresh" content="10" />
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
@@ -29,7 +30,8 @@
                                                 <div class="card-body" style="float: left">
                                                     <h5 class="card-title">Pesanan Meja
                                                         <b>{{ $pesanan->meja->nama }}
-                                                            ({{ $pesanan->meja->sektor->nama }})</b>
+                                                            ({{ $pesanan->meja->sektor->nama }})
+                                                        </b>
                                                     </h5>
                                                     <p class="card-text">
                                                         Kode Pesananan : <b>{{ $pesanan->kode }}</b>

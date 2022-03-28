@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             @foreach ($menus as $menu)
                 <!-- {{ $menu->id }} -->
-                <div class="col-md-4">
+                <div class="col-6 col-md-4 col-sm-6">
                     <div class="card">
                         <img src="{{ $menu->photo }}" class="card-img-top" alt="" />
                         <div class="card-body">

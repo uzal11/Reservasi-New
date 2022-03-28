@@ -3,14 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <a href="{{ url('home') }}" class="btn btn-primary">Kembali</a>
-
-            </div>
             <div class="col-md-12 mt-2">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('pesan') }}"></a>Pesan</li>
+                        <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pilih Meja</li>
                     </ol>
                 </nav>
@@ -57,17 +53,17 @@
                                             <td>
                                                 <button
                                                     onclick="if (document.getElementById('tambah_kursi').value > {{ $meja->max_kursi - $meja->jumlah_kursi }}) 
-                                                                                                                                { 
-                                                                                                                                    alert('jumlah tambah kursi melebihi kapasitas!!!'); 
-                                                                                                                                } 
-                                                                                                                                    else if (document.getElementById('tambah_kursi').value < 0) 
-                                                                                                                                { 
-                                                                                                                                    alert ('kapasitas tidak boleh dibawah nol'); 
-                                                                                                                                } 
-                                                                                                                                    else {document.getElementById('frm{{ $no }}').submit();
-                                                                                                                                }
-                                                                                                                                                                        
-                                                                                                                                "
+                                                                                                                                        { 
+                                                                                                                                            alert('jumlah tambah kursi melebihi kapasitas!!!'); 
+                                                                                                                                        } 
+                                                                                                                                            else if (document.getElementById('tambah_kursi').value < 0) 
+                                                                                                                                        { 
+                                                                                                                                            alert ('kapasitas tidak boleh dibawah nol'); 
+                                                                                                                                        } 
+                                                                                                                                            else {document.getElementById('frm{{ $no }}').submit();
+                                                                                                                                        }
+                                                                                                                                                                                
+                                                                                                                                        "
                                                     class="btn btn-primary btn-sm">
                                                     Pilih
                                                 </button>

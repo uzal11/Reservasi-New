@@ -10,8 +10,8 @@
             <div class="col-md-12 mt-2">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('pesan') }}"></a>Pesan</li>
-                        <li class="breadcrumb-item"><a href="{{ url('history') }}"></a>Riwayat Pemesanan</li>
+                        <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('seluruh_riwayat') }}">Riwayat Pemesanan</a></li>
 
                         <li class="breadcrumb-item active" aria-current="page">Detail Pemesanan</li>
                     </ol>
@@ -44,9 +44,9 @@
                                     <tbody>
                                         <?php $no = 1; ?>
                                         <?php $no = 1; ?>
-                                <?php $total_harga = 0; ?>
+                                        <?php $total_harga = 0; ?>
                                         @foreach ($menu_pesanans as $menu_pesanan)
-                                        <?php $total_harga += $menu_pesanan->total_harga; ?>
+                                            <?php $total_harga += $menu_pesanan->total_harga; ?>
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $menu_pesanan->menu->nama }}</td>
